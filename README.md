@@ -230,6 +230,7 @@ cpanm --quiet --no-interactive Class::Accessor Test::Exception Test::More Log::A
 
 To load the API packages:
 ```perl
+use WWW::OpenAPIClient::BusinessManagementApi;
 use WWW::OpenAPIClient::GroupManagementApi;
 use WWW::OpenAPIClient::InstanceApi;
 use WWW::OpenAPIClient::MessageSendingApi;
@@ -239,36 +240,36 @@ use WWW::OpenAPIClient::MiscellaneousApi;
 
 To load the models:
 ```perl
+use WWW::OpenAPIClient::Object::APIResponse;
+use WWW::OpenAPIClient::Object::ButtonMessagePayload;
+use WWW::OpenAPIClient::Object::ButtonMessageWithMediaPayload;
+use WWW::OpenAPIClient::Object::ContactMessagePayload;
+use WWW::OpenAPIClient::Object::ContactMessagePayloadVcard;
+use WWW::OpenAPIClient::Object::FileUpload;
+use WWW::OpenAPIClient::Object::GroupCreatePayload;
+use WWW::OpenAPIClient::Object::GroupUpdateDescriptionPayload;
+use WWW::OpenAPIClient::Object::GroupUpdateNamePayload;
+use WWW::OpenAPIClient::Object::GroupUpdateParticipantsPayload;
 use WWW::OpenAPIClient::Object::InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest;
 use WWW::OpenAPIClient::Object::InstancesInstanceKeySendAudioPostRequest;
 use WWW::OpenAPIClient::Object::InstancesInstanceKeySendDocumentPostRequest;
 use WWW::OpenAPIClient::Object::InstancesInstanceKeySendImagePostRequest;
 use WWW::OpenAPIClient::Object::InstancesInstanceKeySendUploadPostRequest;
 use WWW::OpenAPIClient::Object::InstancesInstanceKeySendVideoPostRequest;
-use WWW::OpenAPIClient::Object::MainAPIResponse;
-use WWW::OpenAPIClient::Object::StructsButtonMessagePayload;
-use WWW::OpenAPIClient::Object::StructsButtonMessageWithMediaPayload;
-use WWW::OpenAPIClient::Object::StructsContactMessagePayload;
-use WWW::OpenAPIClient::Object::StructsContactMessagePayloadVcard;
-use WWW::OpenAPIClient::Object::StructsFileUpload;
-use WWW::OpenAPIClient::Object::StructsGroupCreatePayload;
-use WWW::OpenAPIClient::Object::StructsGroupUpdateDescriptionPayload;
-use WWW::OpenAPIClient::Object::StructsGroupUpdateNamePayload;
-use WWW::OpenAPIClient::Object::StructsGroupUpdateParticipantsPayload;
-use WWW::OpenAPIClient::Object::StructsListItem;
-use WWW::OpenAPIClient::Object::StructsListMessagePayload;
-use WWW::OpenAPIClient::Object::StructsListSection;
-use WWW::OpenAPIClient::Object::StructsLocationMessagePayload;
-use WWW::OpenAPIClient::Object::StructsLocationMessagePayloadLocation;
-use WWW::OpenAPIClient::Object::StructsPollMessagePayload;
-use WWW::OpenAPIClient::Object::StructsReplyButton;
-use WWW::OpenAPIClient::Object::StructsSendMediaPayload;
-use WWW::OpenAPIClient::Object::StructsTemplateButton;
-use WWW::OpenAPIClient::Object::StructsTemplateButtonPayload;
-use WWW::OpenAPIClient::Object::StructsTemplateButtonWithMediaPayload;
-use WWW::OpenAPIClient::Object::StructsTextMessage;
-use WWW::OpenAPIClient::Object::StructsUserInfoPayload;
-use WWW::OpenAPIClient::Object::StructsWebhookPayload;
+use WWW::OpenAPIClient::Object::ListItem;
+use WWW::OpenAPIClient::Object::ListMessagePayload;
+use WWW::OpenAPIClient::Object::ListSection;
+use WWW::OpenAPIClient::Object::LocationMessagePayload;
+use WWW::OpenAPIClient::Object::LocationMessagePayloadLocation;
+use WWW::OpenAPIClient::Object::PollMessagePayload;
+use WWW::OpenAPIClient::Object::ReplyButton;
+use WWW::OpenAPIClient::Object::SendMediaPayload;
+use WWW::OpenAPIClient::Object::TemplateButton;
+use WWW::OpenAPIClient::Object::TemplateButtonPayload;
+use WWW::OpenAPIClient::Object::TemplateButtonWithMediaPayload;
+use WWW::OpenAPIClient::Object::TextMessage;
+use WWW::OpenAPIClient::Object::UserInfoPayload;
+use WWW::OpenAPIClient::Object::WebhookPayload;
 
 ````
 
@@ -280,48 +281,49 @@ use lib 'lib';
 use strict;
 use warnings;
 # load the API package
+use WWW::OpenAPIClient::BusinessManagementApi;
 use WWW::OpenAPIClient::GroupManagementApi;
 use WWW::OpenAPIClient::InstanceApi;
 use WWW::OpenAPIClient::MessageSendingApi;
 use WWW::OpenAPIClient::MiscellaneousApi;
 
 # load the models
+use WWW::OpenAPIClient::Object::APIResponse;
+use WWW::OpenAPIClient::Object::ButtonMessagePayload;
+use WWW::OpenAPIClient::Object::ButtonMessageWithMediaPayload;
+use WWW::OpenAPIClient::Object::ContactMessagePayload;
+use WWW::OpenAPIClient::Object::ContactMessagePayloadVcard;
+use WWW::OpenAPIClient::Object::FileUpload;
+use WWW::OpenAPIClient::Object::GroupCreatePayload;
+use WWW::OpenAPIClient::Object::GroupUpdateDescriptionPayload;
+use WWW::OpenAPIClient::Object::GroupUpdateNamePayload;
+use WWW::OpenAPIClient::Object::GroupUpdateParticipantsPayload;
 use WWW::OpenAPIClient::Object::InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest;
 use WWW::OpenAPIClient::Object::InstancesInstanceKeySendAudioPostRequest;
 use WWW::OpenAPIClient::Object::InstancesInstanceKeySendDocumentPostRequest;
 use WWW::OpenAPIClient::Object::InstancesInstanceKeySendImagePostRequest;
 use WWW::OpenAPIClient::Object::InstancesInstanceKeySendUploadPostRequest;
 use WWW::OpenAPIClient::Object::InstancesInstanceKeySendVideoPostRequest;
-use WWW::OpenAPIClient::Object::MainAPIResponse;
-use WWW::OpenAPIClient::Object::StructsButtonMessagePayload;
-use WWW::OpenAPIClient::Object::StructsButtonMessageWithMediaPayload;
-use WWW::OpenAPIClient::Object::StructsContactMessagePayload;
-use WWW::OpenAPIClient::Object::StructsContactMessagePayloadVcard;
-use WWW::OpenAPIClient::Object::StructsFileUpload;
-use WWW::OpenAPIClient::Object::StructsGroupCreatePayload;
-use WWW::OpenAPIClient::Object::StructsGroupUpdateDescriptionPayload;
-use WWW::OpenAPIClient::Object::StructsGroupUpdateNamePayload;
-use WWW::OpenAPIClient::Object::StructsGroupUpdateParticipantsPayload;
-use WWW::OpenAPIClient::Object::StructsListItem;
-use WWW::OpenAPIClient::Object::StructsListMessagePayload;
-use WWW::OpenAPIClient::Object::StructsListSection;
-use WWW::OpenAPIClient::Object::StructsLocationMessagePayload;
-use WWW::OpenAPIClient::Object::StructsLocationMessagePayloadLocation;
-use WWW::OpenAPIClient::Object::StructsPollMessagePayload;
-use WWW::OpenAPIClient::Object::StructsReplyButton;
-use WWW::OpenAPIClient::Object::StructsSendMediaPayload;
-use WWW::OpenAPIClient::Object::StructsTemplateButton;
-use WWW::OpenAPIClient::Object::StructsTemplateButtonPayload;
-use WWW::OpenAPIClient::Object::StructsTemplateButtonWithMediaPayload;
-use WWW::OpenAPIClient::Object::StructsTextMessage;
-use WWW::OpenAPIClient::Object::StructsUserInfoPayload;
-use WWW::OpenAPIClient::Object::StructsWebhookPayload;
+use WWW::OpenAPIClient::Object::ListItem;
+use WWW::OpenAPIClient::Object::ListMessagePayload;
+use WWW::OpenAPIClient::Object::ListSection;
+use WWW::OpenAPIClient::Object::LocationMessagePayload;
+use WWW::OpenAPIClient::Object::LocationMessagePayloadLocation;
+use WWW::OpenAPIClient::Object::PollMessagePayload;
+use WWW::OpenAPIClient::Object::ReplyButton;
+use WWW::OpenAPIClient::Object::SendMediaPayload;
+use WWW::OpenAPIClient::Object::TemplateButton;
+use WWW::OpenAPIClient::Object::TemplateButtonPayload;
+use WWW::OpenAPIClient::Object::TemplateButtonWithMediaPayload;
+use WWW::OpenAPIClient::Object::TextMessage;
+use WWW::OpenAPIClient::Object::UserInfoPayload;
+use WWW::OpenAPIClient::Object::WebhookPayload;
 
 # for displaying the API response data
 use Data::Dumper;
 
 
-my $api_instance = WWW::OpenAPIClient::GroupManagementApi->new(
+my $api_instance = WWW::OpenAPIClient::BusinessManagementApi->new(
     # Configure API key authorization: ApiKeyAuth
     api_key => {'Authorization' => 'YOUR_API_KEY'},
     # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
@@ -331,11 +333,11 @@ my $api_instance = WWW::OpenAPIClient::GroupManagementApi->new(
 my $instance_key = "instance_key_example"; # string | Instance key
 
 eval {
-    my $result = $api_instance->instances_instance_key_groups_admin_get(instance_key => $instance_key);
+    my $result = $api_instance->instances_instance_key_business_catalog_get(instance_key => $instance_key);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling GroupManagementApi->instances_instance_key_groups_admin_get: $@\n";
+    warn "Exception when calling BusinessManagementApi->instances_instance_key_business_catalog_get: $@\n";
 }
 
 ```
@@ -346,6 +348,7 @@ All URIs are relative to */api*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*BusinessManagementApi* | [**instances_instance_key_business_catalog_get**](docs/BusinessManagementApi.md#instances_instance_key_business_catalog_get) | **GET** /instances/{instance_key}/business/catalog | Fetches the catlog.
 *GroupManagementApi* | [**instances_instance_key_groups_admin_get**](docs/GroupManagementApi.md#instances_instance_key_groups_admin_get) | **GET** /instances/{instance_key}/groups/admin | Get admin groupss.
 *GroupManagementApi* | [**instances_instance_key_groups_create_post**](docs/GroupManagementApi.md#instances_instance_key_groups_create_post) | **POST** /instances/{instance_key}/groups/create | Create group.
 *GroupManagementApi* | [**instances_instance_key_groups_get**](docs/GroupManagementApi.md#instances_instance_key_groups_get) | **GET** /instances/{instance_key}/groups/ | Get all groups.
@@ -370,7 +373,6 @@ Class | Method | HTTP request | Description
 *InstanceApi* | [**instances_instance_key_qrcode_get**](docs/InstanceApi.md#instances_instance_key_qrcode_get) | **GET** /instances/{instance_key}/qrcode | Get QrCode.
 *InstanceApi* | [**instances_instance_key_webhook_put**](docs/InstanceApi.md#instances_instance_key_webhook_put) | **PUT** /instances/{instance_key}/webhook | Change Webhook url.
 *InstanceApi* | [**instances_list_get**](docs/InstanceApi.md#instances_list_get) | **GET** /instances/list | Get all instances.
-*MessageSendingApi* | [**instances_instance_key_business_catalog_get**](docs/MessageSendingApi.md#instances_instance_key_business_catalog_get) | **GET** /instances/{instance_key}/business/catalog | Fetches the catlog.
 *MessageSendingApi* | [**instances_instance_key_send_audio_post**](docs/MessageSendingApi.md#instances_instance_key_send_audio_post) | **POST** /instances/{instance_key}/send/audio | Send raw audio.
 *MessageSendingApi* | [**instances_instance_key_send_button_media_post**](docs/MessageSendingApi.md#instances_instance_key_send_button_media_post) | **POST** /instances/{instance_key}/send/button-media | Send a button message with a media header.
 *MessageSendingApi* | [**instances_instance_key_send_buttons_post**](docs/MessageSendingApi.md#instances_instance_key_send_buttons_post) | **POST** /instances/{instance_key}/send/buttons | Send a button message.
@@ -380,7 +382,7 @@ Class | Method | HTTP request | Description
 *MessageSendingApi* | [**instances_instance_key_send_list_post**](docs/MessageSendingApi.md#instances_instance_key_send_list_post) | **POST** /instances/{instance_key}/send/list | Send a List message.
 *MessageSendingApi* | [**instances_instance_key_send_location_post**](docs/MessageSendingApi.md#instances_instance_key_send_location_post) | **POST** /instances/{instance_key}/send/location | Send a location message.
 *MessageSendingApi* | [**instances_instance_key_send_media_post**](docs/MessageSendingApi.md#instances_instance_key_send_media_post) | **POST** /instances/{instance_key}/send/media | Send a media message.
-*MessageSendingApi* | [**instances_instance_key_send_poll_post**](docs/MessageSendingApi.md#instances_instance_key_send_poll_post) | **POST** /instances/{instance_key}/send/poll | Send a Poll message with media.
+*MessageSendingApi* | [**instances_instance_key_send_poll_post**](docs/MessageSendingApi.md#instances_instance_key_send_poll_post) | **POST** /instances/{instance_key}/send/poll | Send a Poll message.
 *MessageSendingApi* | [**instances_instance_key_send_template_media_post**](docs/MessageSendingApi.md#instances_instance_key_send_template_media_post) | **POST** /instances/{instance_key}/send/template-media | Send a template message with media.
 *MessageSendingApi* | [**instances_instance_key_send_template_post**](docs/MessageSendingApi.md#instances_instance_key_send_template_post) | **POST** /instances/{instance_key}/send/template | Send a template message.
 *MessageSendingApi* | [**instances_instance_key_send_text_post**](docs/MessageSendingApi.md#instances_instance_key_send_text_post) | **POST** /instances/{instance_key}/send/text | Send a text message.
@@ -391,36 +393,36 @@ Class | Method | HTTP request | Description
 
 
 # DOCUMENTATION FOR MODELS
+ - [WWW::OpenAPIClient::Object::APIResponse](docs/APIResponse.md)
+ - [WWW::OpenAPIClient::Object::ButtonMessagePayload](docs/ButtonMessagePayload.md)
+ - [WWW::OpenAPIClient::Object::ButtonMessageWithMediaPayload](docs/ButtonMessageWithMediaPayload.md)
+ - [WWW::OpenAPIClient::Object::ContactMessagePayload](docs/ContactMessagePayload.md)
+ - [WWW::OpenAPIClient::Object::ContactMessagePayloadVcard](docs/ContactMessagePayloadVcard.md)
+ - [WWW::OpenAPIClient::Object::FileUpload](docs/FileUpload.md)
+ - [WWW::OpenAPIClient::Object::GroupCreatePayload](docs/GroupCreatePayload.md)
+ - [WWW::OpenAPIClient::Object::GroupUpdateDescriptionPayload](docs/GroupUpdateDescriptionPayload.md)
+ - [WWW::OpenAPIClient::Object::GroupUpdateNamePayload](docs/GroupUpdateNamePayload.md)
+ - [WWW::OpenAPIClient::Object::GroupUpdateParticipantsPayload](docs/GroupUpdateParticipantsPayload.md)
  - [WWW::OpenAPIClient::Object::InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest](docs/InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest.md)
  - [WWW::OpenAPIClient::Object::InstancesInstanceKeySendAudioPostRequest](docs/InstancesInstanceKeySendAudioPostRequest.md)
  - [WWW::OpenAPIClient::Object::InstancesInstanceKeySendDocumentPostRequest](docs/InstancesInstanceKeySendDocumentPostRequest.md)
  - [WWW::OpenAPIClient::Object::InstancesInstanceKeySendImagePostRequest](docs/InstancesInstanceKeySendImagePostRequest.md)
  - [WWW::OpenAPIClient::Object::InstancesInstanceKeySendUploadPostRequest](docs/InstancesInstanceKeySendUploadPostRequest.md)
  - [WWW::OpenAPIClient::Object::InstancesInstanceKeySendVideoPostRequest](docs/InstancesInstanceKeySendVideoPostRequest.md)
- - [WWW::OpenAPIClient::Object::MainAPIResponse](docs/MainAPIResponse.md)
- - [WWW::OpenAPIClient::Object::StructsButtonMessagePayload](docs/StructsButtonMessagePayload.md)
- - [WWW::OpenAPIClient::Object::StructsButtonMessageWithMediaPayload](docs/StructsButtonMessageWithMediaPayload.md)
- - [WWW::OpenAPIClient::Object::StructsContactMessagePayload](docs/StructsContactMessagePayload.md)
- - [WWW::OpenAPIClient::Object::StructsContactMessagePayloadVcard](docs/StructsContactMessagePayloadVcard.md)
- - [WWW::OpenAPIClient::Object::StructsFileUpload](docs/StructsFileUpload.md)
- - [WWW::OpenAPIClient::Object::StructsGroupCreatePayload](docs/StructsGroupCreatePayload.md)
- - [WWW::OpenAPIClient::Object::StructsGroupUpdateDescriptionPayload](docs/StructsGroupUpdateDescriptionPayload.md)
- - [WWW::OpenAPIClient::Object::StructsGroupUpdateNamePayload](docs/StructsGroupUpdateNamePayload.md)
- - [WWW::OpenAPIClient::Object::StructsGroupUpdateParticipantsPayload](docs/StructsGroupUpdateParticipantsPayload.md)
- - [WWW::OpenAPIClient::Object::StructsListItem](docs/StructsListItem.md)
- - [WWW::OpenAPIClient::Object::StructsListMessagePayload](docs/StructsListMessagePayload.md)
- - [WWW::OpenAPIClient::Object::StructsListSection](docs/StructsListSection.md)
- - [WWW::OpenAPIClient::Object::StructsLocationMessagePayload](docs/StructsLocationMessagePayload.md)
- - [WWW::OpenAPIClient::Object::StructsLocationMessagePayloadLocation](docs/StructsLocationMessagePayloadLocation.md)
- - [WWW::OpenAPIClient::Object::StructsPollMessagePayload](docs/StructsPollMessagePayload.md)
- - [WWW::OpenAPIClient::Object::StructsReplyButton](docs/StructsReplyButton.md)
- - [WWW::OpenAPIClient::Object::StructsSendMediaPayload](docs/StructsSendMediaPayload.md)
- - [WWW::OpenAPIClient::Object::StructsTemplateButton](docs/StructsTemplateButton.md)
- - [WWW::OpenAPIClient::Object::StructsTemplateButtonPayload](docs/StructsTemplateButtonPayload.md)
- - [WWW::OpenAPIClient::Object::StructsTemplateButtonWithMediaPayload](docs/StructsTemplateButtonWithMediaPayload.md)
- - [WWW::OpenAPIClient::Object::StructsTextMessage](docs/StructsTextMessage.md)
- - [WWW::OpenAPIClient::Object::StructsUserInfoPayload](docs/StructsUserInfoPayload.md)
- - [WWW::OpenAPIClient::Object::StructsWebhookPayload](docs/StructsWebhookPayload.md)
+ - [WWW::OpenAPIClient::Object::ListItem](docs/ListItem.md)
+ - [WWW::OpenAPIClient::Object::ListMessagePayload](docs/ListMessagePayload.md)
+ - [WWW::OpenAPIClient::Object::ListSection](docs/ListSection.md)
+ - [WWW::OpenAPIClient::Object::LocationMessagePayload](docs/LocationMessagePayload.md)
+ - [WWW::OpenAPIClient::Object::LocationMessagePayloadLocation](docs/LocationMessagePayloadLocation.md)
+ - [WWW::OpenAPIClient::Object::PollMessagePayload](docs/PollMessagePayload.md)
+ - [WWW::OpenAPIClient::Object::ReplyButton](docs/ReplyButton.md)
+ - [WWW::OpenAPIClient::Object::SendMediaPayload](docs/SendMediaPayload.md)
+ - [WWW::OpenAPIClient::Object::TemplateButton](docs/TemplateButton.md)
+ - [WWW::OpenAPIClient::Object::TemplateButtonPayload](docs/TemplateButtonPayload.md)
+ - [WWW::OpenAPIClient::Object::TemplateButtonWithMediaPayload](docs/TemplateButtonWithMediaPayload.md)
+ - [WWW::OpenAPIClient::Object::TextMessage](docs/TextMessage.md)
+ - [WWW::OpenAPIClient::Object::UserInfoPayload](docs/UserInfoPayload.md)
+ - [WWW::OpenAPIClient::Object::WebhookPayload](docs/WebhookPayload.md)
 
 
 # DOCUMENTATION FOR AUTHORIZATION

@@ -65,10 +65,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'instances_create_get' } = {
         summary => 'Creates a new instance key.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_create_get {
     my ($self, %args) = @_;
@@ -104,7 +104,7 @@ sub instances_create_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -125,10 +125,10 @@ sub instances_create_get {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_contacts_get' } = {
         summary => 'Get contacts.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_contacts_get {
     my ($self, %args) = @_;
@@ -171,7 +171,7 @@ sub instances_instance_key_contacts_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -192,10 +192,10 @@ sub instances_instance_key_contacts_get {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_delete_delete' } = {
         summary => 'Delete Instance.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_delete_delete {
     my ($self, %args) = @_;
@@ -238,7 +238,7 @@ sub instances_instance_key_delete_delete {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -259,10 +259,10 @@ sub instances_instance_key_delete_delete {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_get' } = {
         summary => 'Get Instance.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_get {
     my ($self, %args) = @_;
@@ -305,7 +305,7 @@ sub instances_instance_key_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -326,10 +326,10 @@ sub instances_instance_key_get {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_logout_delete' } = {
         summary => 'Logout Instance.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_logout_delete {
     my ($self, %args) = @_;
@@ -372,7 +372,7 @@ sub instances_instance_key_logout_delete {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -393,10 +393,10 @@ sub instances_instance_key_logout_delete {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_qrcode_get' } = {
         summary => 'Get QrCode.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_qrcode_get {
     my ($self, %args) = @_;
@@ -439,7 +439,7 @@ sub instances_instance_key_qrcode_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -449,7 +449,7 @@ sub instances_instance_key_qrcode_get {
 # Change Webhook url.
 #
 # @param string $instance_key Instance key (required)
-# @param StructsWebhookPayload $data Message data (required)
+# @param WebhookPayload $data Message data (required)
 {
     my $params = {
     'instance_key' => {
@@ -458,7 +458,7 @@ sub instances_instance_key_qrcode_get {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsWebhookPayload',
+        data_type => 'WebhookPayload',
         description => 'Message data',
         required => '1',
     },
@@ -466,10 +466,10 @@ sub instances_instance_key_qrcode_get {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_webhook_put' } = {
         summary => 'Change Webhook url.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_webhook_put {
     my ($self, %args) = @_;
@@ -522,7 +522,7 @@ sub instances_instance_key_webhook_put {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -537,10 +537,10 @@ sub instances_instance_key_webhook_put {
     __PACKAGE__->method_documentation->{ 'instances_list_get' } = {
         summary => 'Get all instances.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_list_get {
     my ($self, %args) = @_;
@@ -571,7 +571,7 @@ sub instances_list_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 

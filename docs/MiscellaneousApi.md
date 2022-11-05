@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 
 # **instances_instance_key_misc_profile_pic_get**
-> MainAPIResponse instances_instance_key_misc_profile_pic_get(instance_key => $instance_key, jid => $jid)
+> APIResponse instances_instance_key_misc_profile_pic_get(instance_key => $instance_key, jid => $jid)
 
 Get profile pic.
 
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_misc_user_info_post**
-> MainAPIResponse instances_instance_key_misc_user_info_post(instance_key => $instance_key, data => $data)
+> APIResponse instances_instance_key_misc_user_info_post(instance_key => $instance_key, data => $data)
 
 Fetches the users info.
 
@@ -86,7 +86,7 @@ my $api_instance = WWW::OpenAPIClient::MiscellaneousApi->new(
 );
 
 my $instance_key = "instance_key_example"; # string | Instance key
-my $data = WWW::OpenAPIClient::Object::StructsUserInfoPayload->new(); # StructsUserInfoPayload | Data
+my $data = WWW::OpenAPIClient::Object::UserInfoPayload->new(); # UserInfoPayload | Data
 
 eval {
     my $result = $api_instance->instances_instance_key_misc_user_info_post(instance_key => $instance_key, data => $data);
@@ -102,11 +102,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
- **data** | [**StructsUserInfoPayload**](StructsUserInfoPayload.md)| Data | 
+ **data** | [**UserInfoPayload**](UserInfoPayload.md)| Data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 

@@ -28,7 +28,7 @@ Method | HTTP request | Description
 
 
 # **instances_instance_key_groups_admin_get**
-> MainAPIResponse instances_instance_key_groups_admin_get(instance_key => $instance_key)
+> APIResponse instances_instance_key_groups_admin_get(instance_key => $instance_key)
 
 Get admin groupss.
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_groups_create_post**
-> MainAPIResponse instances_instance_key_groups_create_post(instance_key => $instance_key, data => $data)
+> APIResponse instances_instance_key_groups_create_post(instance_key => $instance_key, data => $data)
 
 Create group.
 
@@ -98,7 +98,7 @@ my $api_instance = WWW::OpenAPIClient::GroupManagementApi->new(
 );
 
 my $instance_key = "instance_key_example"; # string | Instance key
-my $data = WWW::OpenAPIClient::Object::StructsGroupCreatePayload->new(); # StructsGroupCreatePayload | Group create payload
+my $data = WWW::OpenAPIClient::Object::GroupCreatePayload->new(); # GroupCreatePayload | Group create payload
 
 eval {
     my $result = $api_instance->instances_instance_key_groups_create_post(instance_key => $instance_key, data => $data);
@@ -114,11 +114,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
- **data** | [**StructsGroupCreatePayload**](StructsGroupCreatePayload.md)| Group create payload | 
+ **data** | [**GroupCreatePayload**](GroupCreatePayload.md)| Group create payload | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_groups_get**
-> MainAPIResponse instances_instance_key_groups_get(instance_key => $instance_key, include_participants => $include_participants)
+> APIResponse instances_instance_key_groups_get(instance_key => $instance_key, include_participants => $include_participants)
 
 Get all groups.
 
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -185,7 +185,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_groups_group_id_announce_put**
-> MainAPIResponse instances_instance_key_groups_group_id_announce_put(instance_key => $instance_key, announce => $announce, group_id => $group_id)
+> APIResponse instances_instance_key_groups_group_id_announce_put(instance_key => $instance_key, announce => $announce, group_id => $group_id)
 
 Set group announce.
 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_groups_group_id_delete**
-> MainAPIResponse instances_instance_key_groups_group_id_delete(instance_key => $instance_key, group_id => $group_id)
+> APIResponse instances_instance_key_groups_group_id_delete(instance_key => $instance_key, group_id => $group_id)
 
 Leaves the group.
 
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_groups_group_id_description_put**
-> MainAPIResponse instances_instance_key_groups_group_id_description_put(instance_key => $instance_key, group_id => $group_id, data => $data)
+> APIResponse instances_instance_key_groups_group_id_description_put(instance_key => $instance_key, group_id => $group_id, data => $data)
 
 Set group description.
 
@@ -313,7 +313,7 @@ my $api_instance = WWW::OpenAPIClient::GroupManagementApi->new(
 
 my $instance_key = "instance_key_example"; # string | Instance key
 my $group_id = "group_id_example"; # string | Group id of the group
-my $data = WWW::OpenAPIClient::Object::StructsGroupUpdateDescriptionPayload->new(); # StructsGroupUpdateDescriptionPayload | Group description data
+my $data = WWW::OpenAPIClient::Object::GroupUpdateDescriptionPayload->new(); # GroupUpdateDescriptionPayload | Group description data
 
 eval {
     my $result = $api_instance->instances_instance_key_groups_group_id_description_put(instance_key => $instance_key, group_id => $group_id, data => $data);
@@ -330,11 +330,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
  **group_id** | **string**| Group id of the group | 
- **data** | [**StructsGroupUpdateDescriptionPayload**](StructsGroupUpdateDescriptionPayload.md)| Group description data | 
+ **data** | [**GroupUpdateDescriptionPayload**](GroupUpdateDescriptionPayload.md)| Group description data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -348,7 +348,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_groups_group_id_get**
-> MainAPIResponse instances_instance_key_groups_group_id_get(instance_key => $instance_key, group_id => $group_id)
+> APIResponse instances_instance_key_groups_group_id_get(instance_key => $instance_key, group_id => $group_id)
 
 Get group.
 
@@ -387,7 +387,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -401,7 +401,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_groups_group_id_invite_code_get**
-> MainAPIResponse instances_instance_key_groups_group_id_invite_code_get(instance_key => $instance_key, group_id => $group_id)
+> APIResponse instances_instance_key_groups_group_id_invite_code_get(instance_key => $instance_key, group_id => $group_id)
 
 Get group invite code.
 
@@ -440,7 +440,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -454,7 +454,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_groups_group_id_lock_put**
-> MainAPIResponse instances_instance_key_groups_group_id_lock_put(instance_key => $instance_key, locked => $locked, group_id => $group_id)
+> APIResponse instances_instance_key_groups_group_id_lock_put(instance_key => $instance_key, locked => $locked, group_id => $group_id)
 
 Set group locked.
 
@@ -495,7 +495,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -509,7 +509,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_groups_group_id_name_put**
-> MainAPIResponse instances_instance_key_groups_group_id_name_put(instance_key => $instance_key, group_id => $group_id, data => $data)
+> APIResponse instances_instance_key_groups_group_id_name_put(instance_key => $instance_key, group_id => $group_id, data => $data)
 
 Set group name.
 
@@ -529,7 +529,7 @@ my $api_instance = WWW::OpenAPIClient::GroupManagementApi->new(
 
 my $instance_key = "instance_key_example"; # string | Instance key
 my $group_id = "group_id_example"; # string | Group id of the group
-my $data = WWW::OpenAPIClient::Object::StructsGroupUpdateNamePayload->new(); # StructsGroupUpdateNamePayload | Group name data
+my $data = WWW::OpenAPIClient::Object::GroupUpdateNamePayload->new(); # GroupUpdateNamePayload | Group name data
 
 eval {
     my $result = $api_instance->instances_instance_key_groups_group_id_name_put(instance_key => $instance_key, group_id => $group_id, data => $data);
@@ -546,11 +546,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
  **group_id** | **string**| Group id of the group | 
- **data** | [**StructsGroupUpdateNamePayload**](StructsGroupUpdateNamePayload.md)| Group name data | 
+ **data** | [**GroupUpdateNamePayload**](GroupUpdateNamePayload.md)| Group name data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -564,7 +564,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_groups_group_id_participants_add_post**
-> MainAPIResponse instances_instance_key_groups_group_id_participants_add_post(instance_key => $instance_key, group_id => $group_id, data => $data)
+> APIResponse instances_instance_key_groups_group_id_participants_add_post(instance_key => $instance_key, group_id => $group_id, data => $data)
 
 Add participant.
 
@@ -584,7 +584,7 @@ my $api_instance = WWW::OpenAPIClient::GroupManagementApi->new(
 
 my $instance_key = "instance_key_example"; # string | Instance key
 my $group_id = "group_id_example"; # string | Group id of the group
-my $data = WWW::OpenAPIClient::Object::StructsGroupUpdateParticipantsPayload->new(); # StructsGroupUpdateParticipantsPayload | Group update payload
+my $data = WWW::OpenAPIClient::Object::GroupUpdateParticipantsPayload->new(); # GroupUpdateParticipantsPayload | Group update payload
 
 eval {
     my $result = $api_instance->instances_instance_key_groups_group_id_participants_add_post(instance_key => $instance_key, group_id => $group_id, data => $data);
@@ -601,11 +601,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
  **group_id** | **string**| Group id of the group | 
- **data** | [**StructsGroupUpdateParticipantsPayload**](StructsGroupUpdateParticipantsPayload.md)| Group update payload | 
+ **data** | [**GroupUpdateParticipantsPayload**](GroupUpdateParticipantsPayload.md)| Group update payload | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -619,7 +619,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_groups_group_id_participants_demote_put**
-> MainAPIResponse instances_instance_key_groups_group_id_participants_demote_put(instance_key => $instance_key, group_id => $group_id, data => $data)
+> APIResponse instances_instance_key_groups_group_id_participants_demote_put(instance_key => $instance_key, group_id => $group_id, data => $data)
 
 Demote participant.
 
@@ -639,7 +639,7 @@ my $api_instance = WWW::OpenAPIClient::GroupManagementApi->new(
 
 my $instance_key = "instance_key_example"; # string | Instance key
 my $group_id = "group_id_example"; # string | Group id of the group
-my $data = WWW::OpenAPIClient::Object::StructsGroupUpdateParticipantsPayload->new(); # StructsGroupUpdateParticipantsPayload | Group update payload
+my $data = WWW::OpenAPIClient::Object::GroupUpdateParticipantsPayload->new(); # GroupUpdateParticipantsPayload | Group update payload
 
 eval {
     my $result = $api_instance->instances_instance_key_groups_group_id_participants_demote_put(instance_key => $instance_key, group_id => $group_id, data => $data);
@@ -656,11 +656,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
  **group_id** | **string**| Group id of the group | 
- **data** | [**StructsGroupUpdateParticipantsPayload**](StructsGroupUpdateParticipantsPayload.md)| Group update payload | 
+ **data** | [**GroupUpdateParticipantsPayload**](GroupUpdateParticipantsPayload.md)| Group update payload | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -674,7 +674,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_groups_group_id_participants_promote_put**
-> MainAPIResponse instances_instance_key_groups_group_id_participants_promote_put(instance_key => $instance_key, group_id => $group_id, data => $data)
+> APIResponse instances_instance_key_groups_group_id_participants_promote_put(instance_key => $instance_key, group_id => $group_id, data => $data)
 
 Promote participant.
 
@@ -694,7 +694,7 @@ my $api_instance = WWW::OpenAPIClient::GroupManagementApi->new(
 
 my $instance_key = "instance_key_example"; # string | Instance key
 my $group_id = "group_id_example"; # string | Group id of the group
-my $data = WWW::OpenAPIClient::Object::StructsGroupUpdateParticipantsPayload->new(); # StructsGroupUpdateParticipantsPayload | Group update payload
+my $data = WWW::OpenAPIClient::Object::GroupUpdateParticipantsPayload->new(); # GroupUpdateParticipantsPayload | Group update payload
 
 eval {
     my $result = $api_instance->instances_instance_key_groups_group_id_participants_promote_put(instance_key => $instance_key, group_id => $group_id, data => $data);
@@ -711,11 +711,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
  **group_id** | **string**| Group id of the group | 
- **data** | [**StructsGroupUpdateParticipantsPayload**](StructsGroupUpdateParticipantsPayload.md)| Group update payload | 
+ **data** | [**GroupUpdateParticipantsPayload**](GroupUpdateParticipantsPayload.md)| Group update payload | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -729,7 +729,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_groups_group_id_participants_remove_delete**
-> MainAPIResponse instances_instance_key_groups_group_id_participants_remove_delete(instance_key => $instance_key, group_id => $group_id, data => $data)
+> APIResponse instances_instance_key_groups_group_id_participants_remove_delete(instance_key => $instance_key, group_id => $group_id, data => $data)
 
 Remove participant.
 
@@ -749,7 +749,7 @@ my $api_instance = WWW::OpenAPIClient::GroupManagementApi->new(
 
 my $instance_key = "instance_key_example"; # string | Instance key
 my $group_id = "group_id_example"; # string | Group id of the group
-my $data = WWW::OpenAPIClient::Object::StructsGroupUpdateParticipantsPayload->new(); # StructsGroupUpdateParticipantsPayload | Group update payload
+my $data = WWW::OpenAPIClient::Object::GroupUpdateParticipantsPayload->new(); # GroupUpdateParticipantsPayload | Group update payload
 
 eval {
     my $result = $api_instance->instances_instance_key_groups_group_id_participants_remove_delete(instance_key => $instance_key, group_id => $group_id, data => $data);
@@ -766,11 +766,11 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
  **group_id** | **string**| Group id of the group | 
- **data** | [**StructsGroupUpdateParticipantsPayload**](StructsGroupUpdateParticipantsPayload.md)| Group update payload | 
+ **data** | [**GroupUpdateParticipantsPayload**](GroupUpdateParticipantsPayload.md)| Group update payload | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -784,7 +784,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_groups_group_id_profile_pic_put**
-> MainAPIResponse instances_instance_key_groups_group_id_profile_pic_put(instance_key => $instance_key, group_id => $group_id, instances_instance_key_groups_group_id_profile_pic_put_request => $instances_instance_key_groups_group_id_profile_pic_put_request)
+> APIResponse instances_instance_key_groups_group_id_profile_pic_put(instance_key => $instance_key, group_id => $group_id, instances_instance_key_groups_group_id_profile_pic_put_request => $instances_instance_key_groups_group_id_profile_pic_put_request)
 
 Set group picture.
 
@@ -825,7 +825,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -839,7 +839,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_groups_invite_info_get**
-> MainAPIResponse instances_instance_key_groups_invite_info_get(instance_key => $instance_key, invite_link => $invite_link)
+> APIResponse instances_instance_key_groups_invite_info_get(instance_key => $instance_key, invite_link => $invite_link)
 
 Get group from invite link.
 
@@ -878,7 +878,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 

@@ -49,73 +49,6 @@ sub new {
 
 
 #
-# instances_instance_key_business_catalog_get
-#
-# Fetches the catlog.
-#
-# @param string $instance_key Instance key (required)
-{
-    my $params = {
-    'instance_key' => {
-        data_type => 'string',
-        description => 'Instance key',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_business_catalog_get' } = {
-        summary => 'Fetches the catlog.',
-        params => $params,
-        returns => 'MainAPIResponse',
-        };
-}
-# @return MainAPIResponse
-#
-sub instances_instance_key_business_catalog_get {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'instance_key' is set
-    unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_business_catalog_get");
-    }
-
-    # parse inputs
-    my $_resource_path = '/instances/{instance_key}/business/catalog';
-
-    my $_method = 'GET';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
-
-    # path params
-    if ( exists $args{'instance_key'}) {
-        my $_base_variable = "{" . "instance_key" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
-    # authentication setting, if any
-    my $auth_settings = [qw(ApiKeyAuth )];
-
-    # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
-    return $_response_object;
-}
-
-#
 # instances_instance_key_send_audio_post
 #
 # Send raw audio.
@@ -150,10 +83,10 @@ sub instances_instance_key_business_catalog_get {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_send_audio_post' } = {
         summary => 'Send raw audio.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_send_audio_post {
     my ($self, %args) = @_;
@@ -221,7 +154,7 @@ sub instances_instance_key_send_audio_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -231,7 +164,7 @@ sub instances_instance_key_send_audio_post {
 # Send a button message with a media header.
 #
 # @param string $instance_key Instance key (required)
-# @param StructsButtonMessageWithMediaPayload $data Message data (required)
+# @param ButtonMessageWithMediaPayload $data Message data (required)
 {
     my $params = {
     'instance_key' => {
@@ -240,7 +173,7 @@ sub instances_instance_key_send_audio_post {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsButtonMessageWithMediaPayload',
+        data_type => 'ButtonMessageWithMediaPayload',
         description => 'Message data',
         required => '1',
     },
@@ -248,10 +181,10 @@ sub instances_instance_key_send_audio_post {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_send_button_media_post' } = {
         summary => 'Send a button message with a media header.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_send_button_media_post {
     my ($self, %args) = @_;
@@ -304,7 +237,7 @@ sub instances_instance_key_send_button_media_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -314,7 +247,7 @@ sub instances_instance_key_send_button_media_post {
 # Send a button message.
 #
 # @param string $instance_key Instance key (required)
-# @param StructsButtonMessagePayload $data Message data (required)
+# @param ButtonMessagePayload $data Message data (required)
 {
     my $params = {
     'instance_key' => {
@@ -323,7 +256,7 @@ sub instances_instance_key_send_button_media_post {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsButtonMessagePayload',
+        data_type => 'ButtonMessagePayload',
         description => 'Message data',
         required => '1',
     },
@@ -331,10 +264,10 @@ sub instances_instance_key_send_button_media_post {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_send_buttons_post' } = {
         summary => 'Send a button message.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_send_buttons_post {
     my ($self, %args) = @_;
@@ -387,7 +320,7 @@ sub instances_instance_key_send_buttons_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -397,7 +330,7 @@ sub instances_instance_key_send_buttons_post {
 # Send a contact message.
 #
 # @param string $instance_key Instance key (required)
-# @param StructsContactMessagePayload $data Message data (required)
+# @param ContactMessagePayload $data Message data (required)
 {
     my $params = {
     'instance_key' => {
@@ -406,7 +339,7 @@ sub instances_instance_key_send_buttons_post {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsContactMessagePayload',
+        data_type => 'ContactMessagePayload',
         description => 'Message data',
         required => '1',
     },
@@ -414,10 +347,10 @@ sub instances_instance_key_send_buttons_post {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_send_contact_post' } = {
         summary => 'Send a contact message.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_send_contact_post {
     my ($self, %args) = @_;
@@ -470,7 +403,7 @@ sub instances_instance_key_send_contact_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -509,10 +442,10 @@ sub instances_instance_key_send_contact_post {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_send_document_post' } = {
         summary => 'Send raw document.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_send_document_post {
     my ($self, %args) = @_;
@@ -580,7 +513,7 @@ sub instances_instance_key_send_document_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -619,10 +552,10 @@ sub instances_instance_key_send_document_post {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_send_image_post' } = {
         summary => 'Send raw image.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_send_image_post {
     my ($self, %args) = @_;
@@ -690,7 +623,7 @@ sub instances_instance_key_send_image_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -700,7 +633,7 @@ sub instances_instance_key_send_image_post {
 # Send a List message.
 #
 # @param string $instance_key Instance key (required)
-# @param StructsListMessagePayload $data Message data (required)
+# @param ListMessagePayload $data Message data (required)
 {
     my $params = {
     'instance_key' => {
@@ -709,7 +642,7 @@ sub instances_instance_key_send_image_post {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsListMessagePayload',
+        data_type => 'ListMessagePayload',
         description => 'Message data',
         required => '1',
     },
@@ -717,10 +650,10 @@ sub instances_instance_key_send_image_post {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_send_list_post' } = {
         summary => 'Send a List message.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_send_list_post {
     my ($self, %args) = @_;
@@ -773,7 +706,7 @@ sub instances_instance_key_send_list_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -783,7 +716,7 @@ sub instances_instance_key_send_list_post {
 # Send a location message.
 #
 # @param string $instance_key Instance key (required)
-# @param StructsLocationMessagePayload $data Message data (required)
+# @param LocationMessagePayload $data Message data (required)
 {
     my $params = {
     'instance_key' => {
@@ -792,7 +725,7 @@ sub instances_instance_key_send_list_post {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsLocationMessagePayload',
+        data_type => 'LocationMessagePayload',
         description => 'Message data',
         required => '1',
     },
@@ -800,10 +733,10 @@ sub instances_instance_key_send_list_post {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_send_location_post' } = {
         summary => 'Send a location message.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_send_location_post {
     my ($self, %args) = @_;
@@ -856,7 +789,7 @@ sub instances_instance_key_send_location_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -866,7 +799,7 @@ sub instances_instance_key_send_location_post {
 # Send a media message.
 #
 # @param string $instance_key Instance key (required)
-# @param StructsSendMediaPayload $data Message data (required)
+# @param SendMediaPayload $data Message data (required)
 {
     my $params = {
     'instance_key' => {
@@ -875,7 +808,7 @@ sub instances_instance_key_send_location_post {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsSendMediaPayload',
+        data_type => 'SendMediaPayload',
         description => 'Message data',
         required => '1',
     },
@@ -883,10 +816,10 @@ sub instances_instance_key_send_location_post {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_send_media_post' } = {
         summary => 'Send a media message.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_send_media_post {
     my ($self, %args) = @_;
@@ -939,17 +872,17 @@ sub instances_instance_key_send_media_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
 #
 # instances_instance_key_send_poll_post
 #
-# Send a Poll message with media.
+# Send a Poll message.
 #
 # @param string $instance_key Instance key (required)
-# @param StructsPollMessagePayload $data Message data (required)
+# @param PollMessagePayload $data Message data (required)
 {
     my $params = {
     'instance_key' => {
@@ -958,18 +891,18 @@ sub instances_instance_key_send_media_post {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsPollMessagePayload',
+        data_type => 'PollMessagePayload',
         description => 'Message data',
         required => '1',
     },
     };
     __PACKAGE__->method_documentation->{ 'instances_instance_key_send_poll_post' } = {
-        summary => 'Send a Poll message with media.',
+        summary => 'Send a Poll message.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_send_poll_post {
     my ($self, %args) = @_;
@@ -1022,7 +955,7 @@ sub instances_instance_key_send_poll_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -1032,7 +965,7 @@ sub instances_instance_key_send_poll_post {
 # Send a template message with media.
 #
 # @param string $instance_key Instance key (required)
-# @param StructsTemplateButtonWithMediaPayload $data Message data (required)
+# @param TemplateButtonWithMediaPayload $data Message data (required)
 {
     my $params = {
     'instance_key' => {
@@ -1041,7 +974,7 @@ sub instances_instance_key_send_poll_post {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsTemplateButtonWithMediaPayload',
+        data_type => 'TemplateButtonWithMediaPayload',
         description => 'Message data',
         required => '1',
     },
@@ -1049,10 +982,10 @@ sub instances_instance_key_send_poll_post {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_send_template_media_post' } = {
         summary => 'Send a template message with media.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_send_template_media_post {
     my ($self, %args) = @_;
@@ -1105,7 +1038,7 @@ sub instances_instance_key_send_template_media_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -1115,7 +1048,7 @@ sub instances_instance_key_send_template_media_post {
 # Send a template message.
 #
 # @param string $instance_key Instance key (required)
-# @param StructsTemplateButtonPayload $data Message data (required)
+# @param TemplateButtonPayload $data Message data (required)
 {
     my $params = {
     'instance_key' => {
@@ -1124,7 +1057,7 @@ sub instances_instance_key_send_template_media_post {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsTemplateButtonPayload',
+        data_type => 'TemplateButtonPayload',
         description => 'Message data',
         required => '1',
     },
@@ -1132,10 +1065,10 @@ sub instances_instance_key_send_template_media_post {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_send_template_post' } = {
         summary => 'Send a template message.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_send_template_post {
     my ($self, %args) = @_;
@@ -1188,7 +1121,7 @@ sub instances_instance_key_send_template_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -1198,7 +1131,7 @@ sub instances_instance_key_send_template_post {
 # Send a text message.
 #
 # @param string $instance_key Instance key (required)
-# @param StructsTextMessage $data Message data (required)
+# @param TextMessage $data Message data (required)
 {
     my $params = {
     'instance_key' => {
@@ -1207,7 +1140,7 @@ sub instances_instance_key_send_template_post {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsTextMessage',
+        data_type => 'TextMessage',
         description => 'Message data',
         required => '1',
     },
@@ -1215,10 +1148,10 @@ sub instances_instance_key_send_template_post {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_send_text_post' } = {
         summary => 'Send a text message.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_send_text_post {
     my ($self, %args) = @_;
@@ -1271,7 +1204,7 @@ sub instances_instance_key_send_text_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -1304,10 +1237,10 @@ sub instances_instance_key_send_text_post {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_send_upload_post' } = {
         summary => 'Upload media.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_send_upload_post {
     my ($self, %args) = @_;
@@ -1370,7 +1303,7 @@ sub instances_instance_key_send_upload_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -1409,10 +1342,10 @@ sub instances_instance_key_send_upload_post {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_send_video_post' } = {
         summary => 'Send raw video.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_send_video_post {
     my ($self, %args) = @_;
@@ -1480,7 +1413,7 @@ sub instances_instance_key_send_video_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 

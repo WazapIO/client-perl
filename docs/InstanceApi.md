@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **instances_create_get**
-> MainAPIResponse instances_create_get(instance_key => $instance_key)
+> APIResponse instances_create_get(instance_key => $instance_key)
 
 Creates a new instance key.
 
@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_contacts_get**
-> MainAPIResponse instances_instance_key_contacts_get(instance_key => $instance_key)
+> APIResponse instances_instance_key_contacts_get(instance_key => $instance_key)
 
 Get contacts.
 
@@ -108,7 +108,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_delete_delete**
-> MainAPIResponse instances_instance_key_delete_delete(instance_key => $instance_key)
+> APIResponse instances_instance_key_delete_delete(instance_key => $instance_key)
 
 Delete Instance.
 
@@ -159,7 +159,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -173,7 +173,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_get**
-> MainAPIResponse instances_instance_key_get(instance_key => $instance_key)
+> APIResponse instances_instance_key_get(instance_key => $instance_key)
 
 Get Instance.
 
@@ -210,7 +210,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_logout_delete**
-> MainAPIResponse instances_instance_key_logout_delete(instance_key => $instance_key)
+> APIResponse instances_instance_key_logout_delete(instance_key => $instance_key)
 
 Logout Instance.
 
@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_qrcode_get**
-> MainAPIResponse instances_instance_key_qrcode_get(instance_key => $instance_key)
+> APIResponse instances_instance_key_qrcode_get(instance_key => $instance_key)
 
 Get QrCode.
 
@@ -312,7 +312,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -326,7 +326,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_webhook_put**
-> MainAPIResponse instances_instance_key_webhook_put(instance_key => $instance_key, data => $data)
+> APIResponse instances_instance_key_webhook_put(instance_key => $instance_key, data => $data)
 
 Change Webhook url.
 
@@ -345,7 +345,7 @@ my $api_instance = WWW::OpenAPIClient::InstanceApi->new(
 );
 
 my $instance_key = "instance_key_example"; # string | Instance key
-my $data = WWW::OpenAPIClient::Object::StructsWebhookPayload->new(); # StructsWebhookPayload | Message data
+my $data = WWW::OpenAPIClient::Object::WebhookPayload->new(); # WebhookPayload | Message data
 
 eval {
     my $result = $api_instance->instances_instance_key_webhook_put(instance_key => $instance_key, data => $data);
@@ -361,11 +361,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
- **data** | [**StructsWebhookPayload**](StructsWebhookPayload.md)| Message data | 
+ **data** | [**WebhookPayload**](WebhookPayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -379,7 +379,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_list_get**
-> MainAPIResponse instances_list_get()
+> APIResponse instances_list_get()
 
 Get all instances.
 
@@ -412,7 +412,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 

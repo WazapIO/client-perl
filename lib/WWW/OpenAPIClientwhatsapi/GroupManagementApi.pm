@@ -65,10 +65,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_admin_get' } = {
         summary => 'Get admin groupss.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_groups_admin_get {
     my ($self, %args) = @_;
@@ -111,7 +111,7 @@ sub instances_instance_key_groups_admin_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -121,7 +121,7 @@ sub instances_instance_key_groups_admin_get {
 # Create group.
 #
 # @param string $instance_key Instance key (required)
-# @param StructsGroupCreatePayload $data Group create payload (required)
+# @param GroupCreatePayload $data Group create payload (required)
 {
     my $params = {
     'instance_key' => {
@@ -130,7 +130,7 @@ sub instances_instance_key_groups_admin_get {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsGroupCreatePayload',
+        data_type => 'GroupCreatePayload',
         description => 'Group create payload',
         required => '1',
     },
@@ -138,10 +138,10 @@ sub instances_instance_key_groups_admin_get {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_create_post' } = {
         summary => 'Create group.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_groups_create_post {
     my ($self, %args) = @_;
@@ -194,7 +194,7 @@ sub instances_instance_key_groups_create_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -221,10 +221,10 @@ sub instances_instance_key_groups_create_post {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_get' } = {
         summary => 'Get all groups.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_groups_get {
     my ($self, %args) = @_;
@@ -272,7 +272,7 @@ sub instances_instance_key_groups_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -305,10 +305,10 @@ sub instances_instance_key_groups_get {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_announce_put' } = {
         summary => 'Set group announce.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_groups_group_id_announce_put {
     my ($self, %args) = @_;
@@ -375,7 +375,7 @@ sub instances_instance_key_groups_group_id_announce_put {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -402,10 +402,10 @@ sub instances_instance_key_groups_group_id_announce_put {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_delete' } = {
         summary => 'Leaves the group.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_groups_group_id_delete {
     my ($self, %args) = @_;
@@ -460,7 +460,7 @@ sub instances_instance_key_groups_group_id_delete {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -471,7 +471,7 @@ sub instances_instance_key_groups_group_id_delete {
 #
 # @param string $instance_key Instance key (required)
 # @param string $group_id Group id of the group (required)
-# @param StructsGroupUpdateDescriptionPayload $data Group description data (required)
+# @param GroupUpdateDescriptionPayload $data Group description data (required)
 {
     my $params = {
     'instance_key' => {
@@ -485,7 +485,7 @@ sub instances_instance_key_groups_group_id_delete {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsGroupUpdateDescriptionPayload',
+        data_type => 'GroupUpdateDescriptionPayload',
         description => 'Group description data',
         required => '1',
     },
@@ -493,10 +493,10 @@ sub instances_instance_key_groups_group_id_delete {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_description_put' } = {
         summary => 'Set group description.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_groups_group_id_description_put {
     my ($self, %args) = @_;
@@ -561,7 +561,7 @@ sub instances_instance_key_groups_group_id_description_put {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -588,10 +588,10 @@ sub instances_instance_key_groups_group_id_description_put {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_get' } = {
         summary => 'Get group.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_groups_group_id_get {
     my ($self, %args) = @_;
@@ -646,7 +646,7 @@ sub instances_instance_key_groups_group_id_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -673,10 +673,10 @@ sub instances_instance_key_groups_group_id_get {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_invite_code_get' } = {
         summary => 'Get group invite code.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_groups_group_id_invite_code_get {
     my ($self, %args) = @_;
@@ -731,7 +731,7 @@ sub instances_instance_key_groups_group_id_invite_code_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -764,10 +764,10 @@ sub instances_instance_key_groups_group_id_invite_code_get {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_lock_put' } = {
         summary => 'Set group locked.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_groups_group_id_lock_put {
     my ($self, %args) = @_;
@@ -834,7 +834,7 @@ sub instances_instance_key_groups_group_id_lock_put {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -845,7 +845,7 @@ sub instances_instance_key_groups_group_id_lock_put {
 #
 # @param string $instance_key Instance key (required)
 # @param string $group_id Group id of the group (required)
-# @param StructsGroupUpdateNamePayload $data Group name data (required)
+# @param GroupUpdateNamePayload $data Group name data (required)
 {
     my $params = {
     'instance_key' => {
@@ -859,7 +859,7 @@ sub instances_instance_key_groups_group_id_lock_put {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsGroupUpdateNamePayload',
+        data_type => 'GroupUpdateNamePayload',
         description => 'Group name data',
         required => '1',
     },
@@ -867,10 +867,10 @@ sub instances_instance_key_groups_group_id_lock_put {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_name_put' } = {
         summary => 'Set group name.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_groups_group_id_name_put {
     my ($self, %args) = @_;
@@ -935,7 +935,7 @@ sub instances_instance_key_groups_group_id_name_put {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -946,7 +946,7 @@ sub instances_instance_key_groups_group_id_name_put {
 #
 # @param string $instance_key Instance key (required)
 # @param string $group_id Group id of the group (required)
-# @param StructsGroupUpdateParticipantsPayload $data Group update payload (required)
+# @param GroupUpdateParticipantsPayload $data Group update payload (required)
 {
     my $params = {
     'instance_key' => {
@@ -960,7 +960,7 @@ sub instances_instance_key_groups_group_id_name_put {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsGroupUpdateParticipantsPayload',
+        data_type => 'GroupUpdateParticipantsPayload',
         description => 'Group update payload',
         required => '1',
     },
@@ -968,10 +968,10 @@ sub instances_instance_key_groups_group_id_name_put {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_participants_add_post' } = {
         summary => 'Add participant.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_groups_group_id_participants_add_post {
     my ($self, %args) = @_;
@@ -1036,7 +1036,7 @@ sub instances_instance_key_groups_group_id_participants_add_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -1047,7 +1047,7 @@ sub instances_instance_key_groups_group_id_participants_add_post {
 #
 # @param string $instance_key Instance key (required)
 # @param string $group_id Group id of the group (required)
-# @param StructsGroupUpdateParticipantsPayload $data Group update payload (required)
+# @param GroupUpdateParticipantsPayload $data Group update payload (required)
 {
     my $params = {
     'instance_key' => {
@@ -1061,7 +1061,7 @@ sub instances_instance_key_groups_group_id_participants_add_post {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsGroupUpdateParticipantsPayload',
+        data_type => 'GroupUpdateParticipantsPayload',
         description => 'Group update payload',
         required => '1',
     },
@@ -1069,10 +1069,10 @@ sub instances_instance_key_groups_group_id_participants_add_post {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_participants_demote_put' } = {
         summary => 'Demote participant.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_groups_group_id_participants_demote_put {
     my ($self, %args) = @_;
@@ -1137,7 +1137,7 @@ sub instances_instance_key_groups_group_id_participants_demote_put {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -1148,7 +1148,7 @@ sub instances_instance_key_groups_group_id_participants_demote_put {
 #
 # @param string $instance_key Instance key (required)
 # @param string $group_id Group id of the group (required)
-# @param StructsGroupUpdateParticipantsPayload $data Group update payload (required)
+# @param GroupUpdateParticipantsPayload $data Group update payload (required)
 {
     my $params = {
     'instance_key' => {
@@ -1162,7 +1162,7 @@ sub instances_instance_key_groups_group_id_participants_demote_put {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsGroupUpdateParticipantsPayload',
+        data_type => 'GroupUpdateParticipantsPayload',
         description => 'Group update payload',
         required => '1',
     },
@@ -1170,10 +1170,10 @@ sub instances_instance_key_groups_group_id_participants_demote_put {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_participants_promote_put' } = {
         summary => 'Promote participant.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_groups_group_id_participants_promote_put {
     my ($self, %args) = @_;
@@ -1238,7 +1238,7 @@ sub instances_instance_key_groups_group_id_participants_promote_put {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -1249,7 +1249,7 @@ sub instances_instance_key_groups_group_id_participants_promote_put {
 #
 # @param string $instance_key Instance key (required)
 # @param string $group_id Group id of the group (required)
-# @param StructsGroupUpdateParticipantsPayload $data Group update payload (required)
+# @param GroupUpdateParticipantsPayload $data Group update payload (required)
 {
     my $params = {
     'instance_key' => {
@@ -1263,7 +1263,7 @@ sub instances_instance_key_groups_group_id_participants_promote_put {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsGroupUpdateParticipantsPayload',
+        data_type => 'GroupUpdateParticipantsPayload',
         description => 'Group update payload',
         required => '1',
     },
@@ -1271,10 +1271,10 @@ sub instances_instance_key_groups_group_id_participants_promote_put {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_participants_remove_delete' } = {
         summary => 'Remove participant.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_groups_group_id_participants_remove_delete {
     my ($self, %args) = @_;
@@ -1339,7 +1339,7 @@ sub instances_instance_key_groups_group_id_participants_remove_delete {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -1372,10 +1372,10 @@ sub instances_instance_key_groups_group_id_participants_remove_delete {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_profile_pic_put' } = {
         summary => 'Set group picture.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_groups_group_id_profile_pic_put {
     my ($self, %args) = @_;
@@ -1440,7 +1440,7 @@ sub instances_instance_key_groups_group_id_profile_pic_put {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -1467,10 +1467,10 @@ sub instances_instance_key_groups_group_id_profile_pic_put {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_invite_info_get' } = {
         summary => 'Get group from invite link.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_groups_invite_info_get {
     my ($self, %args) = @_;
@@ -1523,7 +1523,7 @@ sub instances_instance_key_groups_invite_info_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 

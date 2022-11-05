@@ -9,7 +9,6 @@ All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**instances_instance_key_business_catalog_get**](MessageSendingApi.md#instances_instance_key_business_catalog_get) | **GET** /instances/{instance_key}/business/catalog | Fetches the catlog.
 [**instances_instance_key_send_audio_post**](MessageSendingApi.md#instances_instance_key_send_audio_post) | **POST** /instances/{instance_key}/send/audio | Send raw audio.
 [**instances_instance_key_send_button_media_post**](MessageSendingApi.md#instances_instance_key_send_button_media_post) | **POST** /instances/{instance_key}/send/button-media | Send a button message with a media header.
 [**instances_instance_key_send_buttons_post**](MessageSendingApi.md#instances_instance_key_send_buttons_post) | **POST** /instances/{instance_key}/send/buttons | Send a button message.
@@ -19,7 +18,7 @@ Method | HTTP request | Description
 [**instances_instance_key_send_list_post**](MessageSendingApi.md#instances_instance_key_send_list_post) | **POST** /instances/{instance_key}/send/list | Send a List message.
 [**instances_instance_key_send_location_post**](MessageSendingApi.md#instances_instance_key_send_location_post) | **POST** /instances/{instance_key}/send/location | Send a location message.
 [**instances_instance_key_send_media_post**](MessageSendingApi.md#instances_instance_key_send_media_post) | **POST** /instances/{instance_key}/send/media | Send a media message.
-[**instances_instance_key_send_poll_post**](MessageSendingApi.md#instances_instance_key_send_poll_post) | **POST** /instances/{instance_key}/send/poll | Send a Poll message with media.
+[**instances_instance_key_send_poll_post**](MessageSendingApi.md#instances_instance_key_send_poll_post) | **POST** /instances/{instance_key}/send/poll | Send a Poll message.
 [**instances_instance_key_send_template_media_post**](MessageSendingApi.md#instances_instance_key_send_template_media_post) | **POST** /instances/{instance_key}/send/template-media | Send a template message with media.
 [**instances_instance_key_send_template_post**](MessageSendingApi.md#instances_instance_key_send_template_post) | **POST** /instances/{instance_key}/send/template | Send a template message.
 [**instances_instance_key_send_text_post**](MessageSendingApi.md#instances_instance_key_send_text_post) | **POST** /instances/{instance_key}/send/text | Send a text message.
@@ -27,59 +26,8 @@ Method | HTTP request | Description
 [**instances_instance_key_send_video_post**](MessageSendingApi.md#instances_instance_key_send_video_post) | **POST** /instances/{instance_key}/send/video | Send raw video.
 
 
-# **instances_instance_key_business_catalog_get**
-> MainAPIResponse instances_instance_key_business_catalog_get(instance_key => $instance_key)
-
-Fetches the catlog.
-
-Gets list of all products registered by you.
-
-### Example
-```perl
-use Data::Dumper;
-use WWW::OpenAPIClient::MessageSendingApi;
-my $api_instance = WWW::OpenAPIClient::MessageSendingApi->new(
-
-    # Configure API key authorization: ApiKeyAuth
-    api_key => {'Authorization' => 'YOUR_API_KEY'},
-    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-    #api_key_prefix => {'Authorization' => 'Bearer'},
-);
-
-my $instance_key = "instance_key_example"; # string | Instance key
-
-eval {
-    my $result = $api_instance->instances_instance_key_business_catalog_get(instance_key => $instance_key);
-    print Dumper($result);
-};
-if ($@) {
-    warn "Exception when calling MessageSendingApi->instances_instance_key_business_catalog_get: $@\n";
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **instance_key** | **string**| Instance key | 
-
-### Return type
-
-[**MainAPIResponse**](MainAPIResponse.md)
-
-### Authorization
-
-[ApiKeyAuth](../README.md#ApiKeyAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: */*
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **instances_instance_key_send_audio_post**
-> MainAPIResponse instances_instance_key_send_audio_post(instance_key => $instance_key, to => $to, instances_instance_key_send_audio_post_request => $instances_instance_key_send_audio_post_request, caption => $caption)
+> APIResponse instances_instance_key_send_audio_post(instance_key => $instance_key, to => $to, instances_instance_key_send_audio_post_request => $instances_instance_key_send_audio_post_request, caption => $caption)
 
 Send raw audio.
 
@@ -122,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -136,7 +84,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_send_button_media_post**
-> MainAPIResponse instances_instance_key_send_button_media_post(instance_key => $instance_key, data => $data)
+> APIResponse instances_instance_key_send_button_media_post(instance_key => $instance_key, data => $data)
 
 Send a button message with a media header.
 
@@ -155,7 +103,7 @@ my $api_instance = WWW::OpenAPIClient::MessageSendingApi->new(
 );
 
 my $instance_key = "instance_key_example"; # string | Instance key
-my $data = WWW::OpenAPIClient::Object::StructsButtonMessageWithMediaPayload->new(); # StructsButtonMessageWithMediaPayload | Message data
+my $data = WWW::OpenAPIClient::Object::ButtonMessageWithMediaPayload->new(); # ButtonMessageWithMediaPayload | Message data
 
 eval {
     my $result = $api_instance->instances_instance_key_send_button_media_post(instance_key => $instance_key, data => $data);
@@ -171,11 +119,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
- **data** | [**StructsButtonMessageWithMediaPayload**](StructsButtonMessageWithMediaPayload.md)| Message data | 
+ **data** | [**ButtonMessageWithMediaPayload**](ButtonMessageWithMediaPayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -189,7 +137,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_send_buttons_post**
-> MainAPIResponse instances_instance_key_send_buttons_post(instance_key => $instance_key, data => $data)
+> APIResponse instances_instance_key_send_buttons_post(instance_key => $instance_key, data => $data)
 
 Send a button message.
 
@@ -208,7 +156,7 @@ my $api_instance = WWW::OpenAPIClient::MessageSendingApi->new(
 );
 
 my $instance_key = "instance_key_example"; # string | Instance key
-my $data = WWW::OpenAPIClient::Object::StructsButtonMessagePayload->new(); # StructsButtonMessagePayload | Message data
+my $data = WWW::OpenAPIClient::Object::ButtonMessagePayload->new(); # ButtonMessagePayload | Message data
 
 eval {
     my $result = $api_instance->instances_instance_key_send_buttons_post(instance_key => $instance_key, data => $data);
@@ -224,11 +172,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
- **data** | [**StructsButtonMessagePayload**](StructsButtonMessagePayload.md)| Message data | 
+ **data** | [**ButtonMessagePayload**](ButtonMessagePayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -242,7 +190,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_send_contact_post**
-> MainAPIResponse instances_instance_key_send_contact_post(instance_key => $instance_key, data => $data)
+> APIResponse instances_instance_key_send_contact_post(instance_key => $instance_key, data => $data)
 
 Send a contact message.
 
@@ -261,7 +209,7 @@ my $api_instance = WWW::OpenAPIClient::MessageSendingApi->new(
 );
 
 my $instance_key = "instance_key_example"; # string | Instance key
-my $data = WWW::OpenAPIClient::Object::StructsContactMessagePayload->new(); # StructsContactMessagePayload | Message data
+my $data = WWW::OpenAPIClient::Object::ContactMessagePayload->new(); # ContactMessagePayload | Message data
 
 eval {
     my $result = $api_instance->instances_instance_key_send_contact_post(instance_key => $instance_key, data => $data);
@@ -277,11 +225,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
- **data** | [**StructsContactMessagePayload**](StructsContactMessagePayload.md)| Message data | 
+ **data** | [**ContactMessagePayload**](ContactMessagePayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -295,7 +243,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_send_document_post**
-> MainAPIResponse instances_instance_key_send_document_post(instance_key => $instance_key, to => $to, instances_instance_key_send_document_post_request => $instances_instance_key_send_document_post_request, caption => $caption)
+> APIResponse instances_instance_key_send_document_post(instance_key => $instance_key, to => $to, instances_instance_key_send_document_post_request => $instances_instance_key_send_document_post_request, caption => $caption)
 
 Send raw document.
 
@@ -338,7 +286,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -352,7 +300,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_send_image_post**
-> MainAPIResponse instances_instance_key_send_image_post(instance_key => $instance_key, to => $to, instances_instance_key_send_image_post_request => $instances_instance_key_send_image_post_request, caption => $caption)
+> APIResponse instances_instance_key_send_image_post(instance_key => $instance_key, to => $to, instances_instance_key_send_image_post_request => $instances_instance_key_send_image_post_request, caption => $caption)
 
 Send raw image.
 
@@ -395,7 +343,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -409,7 +357,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_send_list_post**
-> MainAPIResponse instances_instance_key_send_list_post(instance_key => $instance_key, data => $data)
+> APIResponse instances_instance_key_send_list_post(instance_key => $instance_key, data => $data)
 
 Send a List message.
 
@@ -428,7 +376,7 @@ my $api_instance = WWW::OpenAPIClient::MessageSendingApi->new(
 );
 
 my $instance_key = "instance_key_example"; # string | Instance key
-my $data = WWW::OpenAPIClient::Object::StructsListMessagePayload->new(); # StructsListMessagePayload | Message data
+my $data = WWW::OpenAPIClient::Object::ListMessagePayload->new(); # ListMessagePayload | Message data
 
 eval {
     my $result = $api_instance->instances_instance_key_send_list_post(instance_key => $instance_key, data => $data);
@@ -444,11 +392,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
- **data** | [**StructsListMessagePayload**](StructsListMessagePayload.md)| Message data | 
+ **data** | [**ListMessagePayload**](ListMessagePayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -462,7 +410,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_send_location_post**
-> MainAPIResponse instances_instance_key_send_location_post(instance_key => $instance_key, data => $data)
+> APIResponse instances_instance_key_send_location_post(instance_key => $instance_key, data => $data)
 
 Send a location message.
 
@@ -481,7 +429,7 @@ my $api_instance = WWW::OpenAPIClient::MessageSendingApi->new(
 );
 
 my $instance_key = "instance_key_example"; # string | Instance key
-my $data = WWW::OpenAPIClient::Object::StructsLocationMessagePayload->new(); # StructsLocationMessagePayload | Message data
+my $data = WWW::OpenAPIClient::Object::LocationMessagePayload->new(); # LocationMessagePayload | Message data
 
 eval {
     my $result = $api_instance->instances_instance_key_send_location_post(instance_key => $instance_key, data => $data);
@@ -497,11 +445,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
- **data** | [**StructsLocationMessagePayload**](StructsLocationMessagePayload.md)| Message data | 
+ **data** | [**LocationMessagePayload**](LocationMessagePayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -515,7 +463,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_send_media_post**
-> MainAPIResponse instances_instance_key_send_media_post(instance_key => $instance_key, data => $data)
+> APIResponse instances_instance_key_send_media_post(instance_key => $instance_key, data => $data)
 
 Send a media message.
 
@@ -534,7 +482,7 @@ my $api_instance = WWW::OpenAPIClient::MessageSendingApi->new(
 );
 
 my $instance_key = "instance_key_example"; # string | Instance key
-my $data = WWW::OpenAPIClient::Object::StructsSendMediaPayload->new(); # StructsSendMediaPayload | Message data
+my $data = WWW::OpenAPIClient::Object::SendMediaPayload->new(); # SendMediaPayload | Message data
 
 eval {
     my $result = $api_instance->instances_instance_key_send_media_post(instance_key => $instance_key, data => $data);
@@ -550,11 +498,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
- **data** | [**StructsSendMediaPayload**](StructsSendMediaPayload.md)| Message data | 
+ **data** | [**SendMediaPayload**](SendMediaPayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -568,11 +516,11 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_send_poll_post**
-> MainAPIResponse instances_instance_key_send_poll_post(instance_key => $instance_key, data => $data)
+> APIResponse instances_instance_key_send_poll_post(instance_key => $instance_key, data => $data)
 
-Send a Poll message with media.
+Send a Poll message.
 
-Sends an interactive poll message with a media header to the given user. The poll message is a new feature that is currently in beta.
+Sends an interactive poll message to the given user. The poll message is a new feature that is currently in beta.
 
 ### Example
 ```perl
@@ -587,7 +535,7 @@ my $api_instance = WWW::OpenAPIClient::MessageSendingApi->new(
 );
 
 my $instance_key = "instance_key_example"; # string | Instance key
-my $data = WWW::OpenAPIClient::Object::StructsPollMessagePayload->new(); # StructsPollMessagePayload | Message data
+my $data = WWW::OpenAPIClient::Object::PollMessagePayload->new(); # PollMessagePayload | Message data
 
 eval {
     my $result = $api_instance->instances_instance_key_send_poll_post(instance_key => $instance_key, data => $data);
@@ -603,11 +551,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
- **data** | [**StructsPollMessagePayload**](StructsPollMessagePayload.md)| Message data | 
+ **data** | [**PollMessagePayload**](PollMessagePayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -621,7 +569,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_send_template_media_post**
-> MainAPIResponse instances_instance_key_send_template_media_post(instance_key => $instance_key, data => $data)
+> APIResponse instances_instance_key_send_template_media_post(instance_key => $instance_key, data => $data)
 
 Send a template message with media.
 
@@ -640,7 +588,7 @@ my $api_instance = WWW::OpenAPIClient::MessageSendingApi->new(
 );
 
 my $instance_key = "instance_key_example"; # string | Instance key
-my $data = WWW::OpenAPIClient::Object::StructsTemplateButtonWithMediaPayload->new(); # StructsTemplateButtonWithMediaPayload | Message data
+my $data = WWW::OpenAPIClient::Object::TemplateButtonWithMediaPayload->new(); # TemplateButtonWithMediaPayload | Message data
 
 eval {
     my $result = $api_instance->instances_instance_key_send_template_media_post(instance_key => $instance_key, data => $data);
@@ -656,11 +604,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
- **data** | [**StructsTemplateButtonWithMediaPayload**](StructsTemplateButtonWithMediaPayload.md)| Message data | 
+ **data** | [**TemplateButtonWithMediaPayload**](TemplateButtonWithMediaPayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -674,7 +622,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_send_template_post**
-> MainAPIResponse instances_instance_key_send_template_post(instance_key => $instance_key, data => $data)
+> APIResponse instances_instance_key_send_template_post(instance_key => $instance_key, data => $data)
 
 Send a template message.
 
@@ -693,7 +641,7 @@ my $api_instance = WWW::OpenAPIClient::MessageSendingApi->new(
 );
 
 my $instance_key = "instance_key_example"; # string | Instance key
-my $data = WWW::OpenAPIClient::Object::StructsTemplateButtonPayload->new(); # StructsTemplateButtonPayload | Message data
+my $data = WWW::OpenAPIClient::Object::TemplateButtonPayload->new(); # TemplateButtonPayload | Message data
 
 eval {
     my $result = $api_instance->instances_instance_key_send_template_post(instance_key => $instance_key, data => $data);
@@ -709,11 +657,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
- **data** | [**StructsTemplateButtonPayload**](StructsTemplateButtonPayload.md)| Message data | 
+ **data** | [**TemplateButtonPayload**](TemplateButtonPayload.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -727,7 +675,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_send_text_post**
-> MainAPIResponse instances_instance_key_send_text_post(instance_key => $instance_key, data => $data)
+> APIResponse instances_instance_key_send_text_post(instance_key => $instance_key, data => $data)
 
 Send a text message.
 
@@ -746,7 +694,7 @@ my $api_instance = WWW::OpenAPIClient::MessageSendingApi->new(
 );
 
 my $instance_key = "instance_key_example"; # string | Instance key
-my $data = WWW::OpenAPIClient::Object::StructsTextMessage->new(); # StructsTextMessage | Message data
+my $data = WWW::OpenAPIClient::Object::TextMessage->new(); # TextMessage | Message data
 
 eval {
     my $result = $api_instance->instances_instance_key_send_text_post(instance_key => $instance_key, data => $data);
@@ -762,11 +710,11 @@ if ($@) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
- **data** | [**StructsTextMessage**](StructsTextMessage.md)| Message data | 
+ **data** | [**TextMessage**](TextMessage.md)| Message data | 
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -780,7 +728,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_send_upload_post**
-> MainAPIResponse instances_instance_key_send_upload_post(instance_key => $instance_key, type => $type, instances_instance_key_send_upload_post_request => $instances_instance_key_send_upload_post_request)
+> APIResponse instances_instance_key_send_upload_post(instance_key => $instance_key, type => $type, instances_instance_key_send_upload_post_request => $instances_instance_key_send_upload_post_request)
 
 Upload media.
 
@@ -821,7 +769,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 
@@ -835,7 +783,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **instances_instance_key_send_video_post**
-> MainAPIResponse instances_instance_key_send_video_post(instance_key => $instance_key, to => $to, instances_instance_key_send_video_post_request => $instances_instance_key_send_video_post_request, caption => $caption)
+> APIResponse instances_instance_key_send_video_post(instance_key => $instance_key, to => $to, instances_instance_key_send_video_post_request => $instances_instance_key_send_video_post_request, caption => $caption)
 
 Send raw video.
 
@@ -878,7 +826,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**MainAPIResponse**](MainAPIResponse.md)
+[**APIResponse**](APIResponse.md)
 
 ### Authorization
 

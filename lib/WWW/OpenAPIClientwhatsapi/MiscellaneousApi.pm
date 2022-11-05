@@ -71,10 +71,10 @@ sub new {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_misc_profile_pic_get' } = {
         summary => 'Get profile pic.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_misc_profile_pic_get {
     my ($self, %args) = @_;
@@ -127,7 +127,7 @@ sub instances_instance_key_misc_profile_pic_get {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
@@ -137,7 +137,7 @@ sub instances_instance_key_misc_profile_pic_get {
 # Fetches the users info.
 #
 # @param string $instance_key Instance key (required)
-# @param StructsUserInfoPayload $data Data (required)
+# @param UserInfoPayload $data Data (required)
 {
     my $params = {
     'instance_key' => {
@@ -146,7 +146,7 @@ sub instances_instance_key_misc_profile_pic_get {
         required => '1',
     },
     'data' => {
-        data_type => 'StructsUserInfoPayload',
+        data_type => 'UserInfoPayload',
         description => 'Data',
         required => '1',
     },
@@ -154,10 +154,10 @@ sub instances_instance_key_misc_profile_pic_get {
     __PACKAGE__->method_documentation->{ 'instances_instance_key_misc_user_info_post' } = {
         summary => 'Fetches the users info.',
         params => $params,
-        returns => 'MainAPIResponse',
+        returns => 'APIResponse',
         };
 }
-# @return MainAPIResponse
+# @return APIResponse
 #
 sub instances_instance_key_misc_user_info_post {
     my ($self, %args) = @_;
@@ -210,7 +210,7 @@ sub instances_instance_key_misc_user_info_post {
     if (!$response) {
         return;
     }
-    my $_response_object = $self->{api_client}->deserialize('MainAPIResponse', $response);
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
     return $_response_object;
 }
 
