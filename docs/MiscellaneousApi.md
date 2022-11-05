@@ -9,12 +9,12 @@ All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**instances_instance_key_misc_profile_pic_get**](MiscellaneousApi.md#instances_instance_key_misc_profile_pic_get) | **GET** /instances/{instance_key}/misc/profile-pic | Get profile pic.
-[**instances_instance_key_misc_user_info_post**](MiscellaneousApi.md#instances_instance_key_misc_user_info_post) | **POST** /instances/{instance_key}/misc/user-info | Fetches the users info.
+[**get_profile_pic**](MiscellaneousApi.md#get_profile_pic) | **GET** /instances/{instance_key}/misc/profile-pic | Get profile pic.
+[**get_users_info**](MiscellaneousApi.md#get_users_info) | **POST** /instances/{instance_key}/misc/user-info | Fetches the users info.
 
 
-# **instances_instance_key_misc_profile_pic_get**
-> APIResponse instances_instance_key_misc_profile_pic_get(instance_key => $instance_key, jid => $jid)
+# **get_profile_pic**
+> APIResponse get_profile_pic(instance_key => $instance_key, jid => $jid)
 
 Get profile pic.
 
@@ -36,11 +36,11 @@ my $instance_key = "instance_key_example"; # string | Instance key
 my $jid = "jid_example"; # string | JID
 
 eval {
-    my $result = $api_instance->instances_instance_key_misc_profile_pic_get(instance_key => $instance_key, jid => $jid);
+    my $result = $api_instance->get_profile_pic(instance_key => $instance_key, jid => $jid);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling MiscellaneousApi->instances_instance_key_misc_profile_pic_get: $@\n";
+    warn "Exception when calling MiscellaneousApi->get_profile_pic: $@\n";
 }
 ```
 
@@ -66,8 +66,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **instances_instance_key_misc_user_info_post**
-> APIResponse instances_instance_key_misc_user_info_post(instance_key => $instance_key, data => $data)
+# **get_users_info**
+> APIResponse get_users_info(instance_key => $instance_key, data => $data)
 
 Fetches the users info.
 
@@ -89,11 +89,11 @@ my $instance_key = "instance_key_example"; # string | Instance key
 my $data = WWW::OpenAPIClient::Object::UserInfoPayload->new(); # UserInfoPayload | Data
 
 eval {
-    my $result = $api_instance->instances_instance_key_misc_user_info_post(instance_key => $instance_key, data => $data);
+    my $result = $api_instance->get_users_info(instance_key => $instance_key, data => $data);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling MiscellaneousApi->instances_instance_key_misc_user_info_post: $@\n";
+    warn "Exception when calling MiscellaneousApi->get_users_info: $@\n";
 }
 ```
 

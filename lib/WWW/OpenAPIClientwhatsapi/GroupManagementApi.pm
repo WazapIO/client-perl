@@ -49,11 +49,13 @@ sub new {
 
 
 #
-# instances_instance_key_groups_admin_get
+# add_participant
 #
-# Get admin groupss.
+# Add participant.
 #
 # @param string $instance_key Instance key (required)
+# @param string $group_id Group id of the group (required)
+# @param GroupUpdateParticipantsPayload $data Group update payload (required)
 {
     my $params = {
     'instance_key' => {
@@ -61,27 +63,47 @@ sub new {
         description => 'Instance key',
         required => '1',
     },
+    'group_id' => {
+        data_type => 'string',
+        description => 'Group id of the group',
+        required => '1',
+    },
+    'data' => {
+        data_type => 'GroupUpdateParticipantsPayload',
+        description => 'Group update payload',
+        required => '1',
+    },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_admin_get' } = {
-        summary => 'Get admin groupss.',
+    __PACKAGE__->method_documentation->{ 'add_participant' } = {
+        summary => 'Add participant.',
         params => $params,
         returns => 'APIResponse',
         };
 }
 # @return APIResponse
 #
-sub instances_instance_key_groups_admin_get {
+sub add_participant {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_groups_admin_get");
+      croak("Missing the required parameter 'instance_key' when calling add_participant");
+    }
+
+    # verify the required parameter 'group_id' is set
+    unless (exists $args{'group_id'}) {
+      croak("Missing the required parameter 'group_id' when calling add_participant");
+    }
+
+    # verify the required parameter 'data' is set
+    unless (exists $args{'data'}) {
+      croak("Missing the required parameter 'data' when calling add_participant");
     }
 
     # parse inputs
-    my $_resource_path = '/instances/{instance_key}/groups/admin';
+    my $_resource_path = '/instances/{instance_key}/groups/{group_id}/participants/add';
 
-    my $_method = 'GET';
+    my $_method = 'POST';
     my $query_params = {};
     my $header_params = {};
     my $form_params = {};
@@ -91,7 +113,7 @@ sub instances_instance_key_groups_admin_get {
     if ($_header_accept) {
         $header_params->{'Accept'} = $_header_accept;
     }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
 
     # path params
     if ( exists $args{'instance_key'}) {
@@ -100,7 +122,19 @@ sub instances_instance_key_groups_admin_get {
         $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 
+    # path params
+    if ( exists $args{'group_id'}) {
+        my $_base_variable = "{" . "group_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
     my $_body_data;
+    # body params
+    if ( exists $args{'data'}) {
+        $_body_data = $args{'data'};
+    }
+
     # authentication setting, if any
     my $auth_settings = [qw(ApiKeyAuth )];
 
@@ -116,7 +150,7 @@ sub instances_instance_key_groups_admin_get {
 }
 
 #
-# instances_instance_key_groups_create_post
+# create_group
 #
 # Create group.
 #
@@ -135,7 +169,7 @@ sub instances_instance_key_groups_admin_get {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_create_post' } = {
+    __PACKAGE__->method_documentation->{ 'create_group' } = {
         summary => 'Create group.',
         params => $params,
         returns => 'APIResponse',
@@ -143,17 +177,17 @@ sub instances_instance_key_groups_admin_get {
 }
 # @return APIResponse
 #
-sub instances_instance_key_groups_create_post {
+sub create_group {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_groups_create_post");
+      croak("Missing the required parameter 'instance_key' when calling create_group");
     }
 
     # verify the required parameter 'data' is set
     unless (exists $args{'data'}) {
-      croak("Missing the required parameter 'data' when calling instances_instance_key_groups_create_post");
+      croak("Missing the required parameter 'data' when calling create_group");
     }
 
     # parse inputs
@@ -199,7 +233,175 @@ sub instances_instance_key_groups_create_post {
 }
 
 #
-# instances_instance_key_groups_get
+# demote_participant
+#
+# Demote participant.
+#
+# @param string $instance_key Instance key (required)
+# @param string $group_id Group id of the group (required)
+# @param GroupUpdateParticipantsPayload $data Group update payload (required)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    'group_id' => {
+        data_type => 'string',
+        description => 'Group id of the group',
+        required => '1',
+    },
+    'data' => {
+        data_type => 'GroupUpdateParticipantsPayload',
+        description => 'Group update payload',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'demote_participant' } = {
+        summary => 'Demote participant.',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub demote_participant {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling demote_participant");
+    }
+
+    # verify the required parameter 'group_id' is set
+    unless (exists $args{'group_id'}) {
+      croak("Missing the required parameter 'group_id' when calling demote_participant");
+    }
+
+    # verify the required parameter 'data' is set
+    unless (exists $args{'data'}) {
+      croak("Missing the required parameter 'data' when calling demote_participant");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/groups/{group_id}/participants/demote';
+
+    my $_method = 'PUT';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # path params
+    if ( exists $args{'group_id'}) {
+        my $_base_variable = "{" . "group_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'data'}) {
+        $_body_data = $args{'data'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
+#
+# get_admin_groups
+#
+# Get admin groups.
+#
+# @param string $instance_key Instance key (required)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'get_admin_groups' } = {
+        summary => 'Get admin groups.',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub get_admin_groups {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling get_admin_groups");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/groups/admin';
+
+    my $_method = 'GET';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
+#
+# get_all_groups
 #
 # Get all groups.
 #
@@ -218,7 +420,7 @@ sub instances_instance_key_groups_create_post {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_get' } = {
+    __PACKAGE__->method_documentation->{ 'get_all_groups' } = {
         summary => 'Get all groups.',
         params => $params,
         returns => 'APIResponse',
@@ -226,12 +428,12 @@ sub instances_instance_key_groups_create_post {
 }
 # @return APIResponse
 #
-sub instances_instance_key_groups_get {
+sub get_all_groups {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_groups_get");
+      croak("Missing the required parameter 'instance_key' when calling get_all_groups");
     }
 
     # parse inputs
@@ -277,7 +479,547 @@ sub instances_instance_key_groups_get {
 }
 
 #
-# instances_instance_key_groups_group_id_announce_put
+# get_group
+#
+# Get group.
+#
+# @param string $instance_key Instance key (required)
+# @param string $group_id Group id of the group (required)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    'group_id' => {
+        data_type => 'string',
+        description => 'Group id of the group',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'get_group' } = {
+        summary => 'Get group.',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub get_group {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling get_group");
+    }
+
+    # verify the required parameter 'group_id' is set
+    unless (exists $args{'group_id'}) {
+      croak("Missing the required parameter 'group_id' when calling get_group");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/groups/{group_id}';
+
+    my $_method = 'GET';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # path params
+    if ( exists $args{'group_id'}) {
+        my $_base_variable = "{" . "group_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
+#
+# get_group_from_invite_link
+#
+# Get group from invite link.
+#
+# @param string $instance_key Instance key (required)
+# @param string $invite_link The invite link to check (required)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    'invite_link' => {
+        data_type => 'string',
+        description => 'The invite link to check',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'get_group_from_invite_link' } = {
+        summary => 'Get group from invite link.',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub get_group_from_invite_link {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling get_group_from_invite_link");
+    }
+
+    # verify the required parameter 'invite_link' is set
+    unless (exists $args{'invite_link'}) {
+      croak("Missing the required parameter 'invite_link' when calling get_group_from_invite_link");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/groups/invite-info';
+
+    my $_method = 'GET';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # query params
+    if ( exists $args{'invite_link'}) {
+        $query_params->{'invite_link'} = $self->{api_client}->to_query_value($args{'invite_link'});
+    }
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
+#
+# get_group_invite_code
+#
+# Get group invite code.
+#
+# @param string $instance_key Instance key (required)
+# @param string $group_id Group id of the group (required)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    'group_id' => {
+        data_type => 'string',
+        description => 'Group id of the group',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'get_group_invite_code' } = {
+        summary => 'Get group invite code.',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub get_group_invite_code {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling get_group_invite_code");
+    }
+
+    # verify the required parameter 'group_id' is set
+    unless (exists $args{'group_id'}) {
+      croak("Missing the required parameter 'group_id' when calling get_group_invite_code");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/groups/{group_id}/invite-code';
+
+    my $_method = 'GET';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # path params
+    if ( exists $args{'group_id'}) {
+        my $_base_variable = "{" . "group_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
+#
+# leave_group
+#
+# Leaves the group.
+#
+# @param string $instance_key Instance key (required)
+# @param string $group_id Group id of the group (required)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    'group_id' => {
+        data_type => 'string',
+        description => 'Group id of the group',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'leave_group' } = {
+        summary => 'Leaves the group.',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub leave_group {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling leave_group");
+    }
+
+    # verify the required parameter 'group_id' is set
+    unless (exists $args{'group_id'}) {
+      croak("Missing the required parameter 'group_id' when calling leave_group");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/groups/{group_id}/';
+
+    my $_method = 'DELETE';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # path params
+    if ( exists $args{'group_id'}) {
+        my $_base_variable = "{" . "group_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
+#
+# promote_participant
+#
+# Promote participant.
+#
+# @param string $instance_key Instance key (required)
+# @param string $group_id Group id of the group (required)
+# @param GroupUpdateParticipantsPayload $data Group update payload (required)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    'group_id' => {
+        data_type => 'string',
+        description => 'Group id of the group',
+        required => '1',
+    },
+    'data' => {
+        data_type => 'GroupUpdateParticipantsPayload',
+        description => 'Group update payload',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'promote_participant' } = {
+        summary => 'Promote participant.',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub promote_participant {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling promote_participant");
+    }
+
+    # verify the required parameter 'group_id' is set
+    unless (exists $args{'group_id'}) {
+      croak("Missing the required parameter 'group_id' when calling promote_participant");
+    }
+
+    # verify the required parameter 'data' is set
+    unless (exists $args{'data'}) {
+      croak("Missing the required parameter 'data' when calling promote_participant");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/groups/{group_id}/participants/promote';
+
+    my $_method = 'PUT';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # path params
+    if ( exists $args{'group_id'}) {
+        my $_base_variable = "{" . "group_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'data'}) {
+        $_body_data = $args{'data'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
+#
+# remove_participant
+#
+# Remove participant.
+#
+# @param string $instance_key Instance key (required)
+# @param string $group_id Group id of the group (required)
+# @param GroupUpdateParticipantsPayload $data Group update payload (required)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    'group_id' => {
+        data_type => 'string',
+        description => 'Group id of the group',
+        required => '1',
+    },
+    'data' => {
+        data_type => 'GroupUpdateParticipantsPayload',
+        description => 'Group update payload',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'remove_participant' } = {
+        summary => 'Remove participant.',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub remove_participant {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling remove_participant");
+    }
+
+    # verify the required parameter 'group_id' is set
+    unless (exists $args{'group_id'}) {
+      croak("Missing the required parameter 'group_id' when calling remove_participant");
+    }
+
+    # verify the required parameter 'data' is set
+    unless (exists $args{'data'}) {
+      croak("Missing the required parameter 'data' when calling remove_participant");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/groups/{group_id}/participants/remove';
+
+    my $_method = 'DELETE';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # path params
+    if ( exists $args{'group_id'}) {
+        my $_base_variable = "{" . "group_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'data'}) {
+        $_body_data = $args{'data'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
+#
+# set_group_announce
 #
 # Set group announce.
 #
@@ -302,7 +1044,7 @@ sub instances_instance_key_groups_get {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_announce_put' } = {
+    __PACKAGE__->method_documentation->{ 'set_group_announce' } = {
         summary => 'Set group announce.',
         params => $params,
         returns => 'APIResponse',
@@ -310,22 +1052,22 @@ sub instances_instance_key_groups_get {
 }
 # @return APIResponse
 #
-sub instances_instance_key_groups_group_id_announce_put {
+sub set_group_announce {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_groups_group_id_announce_put");
+      croak("Missing the required parameter 'instance_key' when calling set_group_announce");
     }
 
     # verify the required parameter 'announce' is set
     unless (exists $args{'announce'}) {
-      croak("Missing the required parameter 'announce' when calling instances_instance_key_groups_group_id_announce_put");
+      croak("Missing the required parameter 'announce' when calling set_group_announce");
     }
 
     # verify the required parameter 'group_id' is set
     unless (exists $args{'group_id'}) {
-      croak("Missing the required parameter 'group_id' when calling instances_instance_key_groups_group_id_announce_put");
+      croak("Missing the required parameter 'group_id' when calling set_group_announce");
     }
 
     # parse inputs
@@ -380,92 +1122,7 @@ sub instances_instance_key_groups_group_id_announce_put {
 }
 
 #
-# instances_instance_key_groups_group_id_delete
-#
-# Leaves the group.
-#
-# @param string $instance_key Instance key (required)
-# @param string $group_id Group id of the group (required)
-{
-    my $params = {
-    'instance_key' => {
-        data_type => 'string',
-        description => 'Instance key',
-        required => '1',
-    },
-    'group_id' => {
-        data_type => 'string',
-        description => 'Group id of the group',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_delete' } = {
-        summary => 'Leaves the group.',
-        params => $params,
-        returns => 'APIResponse',
-        };
-}
-# @return APIResponse
-#
-sub instances_instance_key_groups_group_id_delete {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'instance_key' is set
-    unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_groups_group_id_delete");
-    }
-
-    # verify the required parameter 'group_id' is set
-    unless (exists $args{'group_id'}) {
-      croak("Missing the required parameter 'group_id' when calling instances_instance_key_groups_group_id_delete");
-    }
-
-    # parse inputs
-    my $_resource_path = '/instances/{instance_key}/groups/{group_id}/';
-
-    my $_method = 'DELETE';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
-
-    # path params
-    if ( exists $args{'instance_key'}) {
-        my $_base_variable = "{" . "instance_key" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    # path params
-    if ( exists $args{'group_id'}) {
-        my $_base_variable = "{" . "group_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'group_id'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
-    # authentication setting, if any
-    my $auth_settings = [qw(ApiKeyAuth )];
-
-    # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
-    return $_response_object;
-}
-
-#
-# instances_instance_key_groups_group_id_description_put
+# set_group_description
 #
 # Set group description.
 #
@@ -490,7 +1147,7 @@ sub instances_instance_key_groups_group_id_delete {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_description_put' } = {
+    __PACKAGE__->method_documentation->{ 'set_group_description' } = {
         summary => 'Set group description.',
         params => $params,
         returns => 'APIResponse',
@@ -498,22 +1155,22 @@ sub instances_instance_key_groups_group_id_delete {
 }
 # @return APIResponse
 #
-sub instances_instance_key_groups_group_id_description_put {
+sub set_group_description {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_groups_group_id_description_put");
+      croak("Missing the required parameter 'instance_key' when calling set_group_description");
     }
 
     # verify the required parameter 'group_id' is set
     unless (exists $args{'group_id'}) {
-      croak("Missing the required parameter 'group_id' when calling instances_instance_key_groups_group_id_description_put");
+      croak("Missing the required parameter 'group_id' when calling set_group_description");
     }
 
     # verify the required parameter 'data' is set
     unless (exists $args{'data'}) {
-      croak("Missing the required parameter 'data' when calling instances_instance_key_groups_group_id_description_put");
+      croak("Missing the required parameter 'data' when calling set_group_description");
     }
 
     # parse inputs
@@ -566,177 +1223,7 @@ sub instances_instance_key_groups_group_id_description_put {
 }
 
 #
-# instances_instance_key_groups_group_id_get
-#
-# Get group.
-#
-# @param string $instance_key Instance key (required)
-# @param string $group_id Group id of the group (required)
-{
-    my $params = {
-    'instance_key' => {
-        data_type => 'string',
-        description => 'Instance key',
-        required => '1',
-    },
-    'group_id' => {
-        data_type => 'string',
-        description => 'Group id of the group',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_get' } = {
-        summary => 'Get group.',
-        params => $params,
-        returns => 'APIResponse',
-        };
-}
-# @return APIResponse
-#
-sub instances_instance_key_groups_group_id_get {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'instance_key' is set
-    unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_groups_group_id_get");
-    }
-
-    # verify the required parameter 'group_id' is set
-    unless (exists $args{'group_id'}) {
-      croak("Missing the required parameter 'group_id' when calling instances_instance_key_groups_group_id_get");
-    }
-
-    # parse inputs
-    my $_resource_path = '/instances/{instance_key}/groups/{group_id}';
-
-    my $_method = 'GET';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
-
-    # path params
-    if ( exists $args{'instance_key'}) {
-        my $_base_variable = "{" . "instance_key" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    # path params
-    if ( exists $args{'group_id'}) {
-        my $_base_variable = "{" . "group_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'group_id'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
-    # authentication setting, if any
-    my $auth_settings = [qw(ApiKeyAuth )];
-
-    # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
-    return $_response_object;
-}
-
-#
-# instances_instance_key_groups_group_id_invite_code_get
-#
-# Get group invite code.
-#
-# @param string $instance_key Instance key (required)
-# @param string $group_id Group id of the group (required)
-{
-    my $params = {
-    'instance_key' => {
-        data_type => 'string',
-        description => 'Instance key',
-        required => '1',
-    },
-    'group_id' => {
-        data_type => 'string',
-        description => 'Group id of the group',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_invite_code_get' } = {
-        summary => 'Get group invite code.',
-        params => $params,
-        returns => 'APIResponse',
-        };
-}
-# @return APIResponse
-#
-sub instances_instance_key_groups_group_id_invite_code_get {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'instance_key' is set
-    unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_groups_group_id_invite_code_get");
-    }
-
-    # verify the required parameter 'group_id' is set
-    unless (exists $args{'group_id'}) {
-      croak("Missing the required parameter 'group_id' when calling instances_instance_key_groups_group_id_invite_code_get");
-    }
-
-    # parse inputs
-    my $_resource_path = '/instances/{instance_key}/groups/{group_id}/invite-code';
-
-    my $_method = 'GET';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
-
-    # path params
-    if ( exists $args{'instance_key'}) {
-        my $_base_variable = "{" . "instance_key" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    # path params
-    if ( exists $args{'group_id'}) {
-        my $_base_variable = "{" . "group_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'group_id'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
-    # authentication setting, if any
-    my $auth_settings = [qw(ApiKeyAuth )];
-
-    # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
-    return $_response_object;
-}
-
-#
-# instances_instance_key_groups_group_id_lock_put
+# set_group_locked
 #
 # Set group locked.
 #
@@ -761,7 +1248,7 @@ sub instances_instance_key_groups_group_id_invite_code_get {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_lock_put' } = {
+    __PACKAGE__->method_documentation->{ 'set_group_locked' } = {
         summary => 'Set group locked.',
         params => $params,
         returns => 'APIResponse',
@@ -769,22 +1256,22 @@ sub instances_instance_key_groups_group_id_invite_code_get {
 }
 # @return APIResponse
 #
-sub instances_instance_key_groups_group_id_lock_put {
+sub set_group_locked {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_groups_group_id_lock_put");
+      croak("Missing the required parameter 'instance_key' when calling set_group_locked");
     }
 
     # verify the required parameter 'locked' is set
     unless (exists $args{'locked'}) {
-      croak("Missing the required parameter 'locked' when calling instances_instance_key_groups_group_id_lock_put");
+      croak("Missing the required parameter 'locked' when calling set_group_locked");
     }
 
     # verify the required parameter 'group_id' is set
     unless (exists $args{'group_id'}) {
-      croak("Missing the required parameter 'group_id' when calling instances_instance_key_groups_group_id_lock_put");
+      croak("Missing the required parameter 'group_id' when calling set_group_locked");
     }
 
     # parse inputs
@@ -839,7 +1326,7 @@ sub instances_instance_key_groups_group_id_lock_put {
 }
 
 #
-# instances_instance_key_groups_group_id_name_put
+# set_group_name
 #
 # Set group name.
 #
@@ -864,7 +1351,7 @@ sub instances_instance_key_groups_group_id_lock_put {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_name_put' } = {
+    __PACKAGE__->method_documentation->{ 'set_group_name' } = {
         summary => 'Set group name.',
         params => $params,
         returns => 'APIResponse',
@@ -872,22 +1359,22 @@ sub instances_instance_key_groups_group_id_lock_put {
 }
 # @return APIResponse
 #
-sub instances_instance_key_groups_group_id_name_put {
+sub set_group_name {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_groups_group_id_name_put");
+      croak("Missing the required parameter 'instance_key' when calling set_group_name");
     }
 
     # verify the required parameter 'group_id' is set
     unless (exists $args{'group_id'}) {
-      croak("Missing the required parameter 'group_id' when calling instances_instance_key_groups_group_id_name_put");
+      croak("Missing the required parameter 'group_id' when calling set_group_name");
     }
 
     # verify the required parameter 'data' is set
     unless (exists $args{'data'}) {
-      croak("Missing the required parameter 'data' when calling instances_instance_key_groups_group_id_name_put");
+      croak("Missing the required parameter 'data' when calling set_group_name");
     }
 
     # parse inputs
@@ -940,417 +1427,13 @@ sub instances_instance_key_groups_group_id_name_put {
 }
 
 #
-# instances_instance_key_groups_group_id_participants_add_post
-#
-# Add participant.
-#
-# @param string $instance_key Instance key (required)
-# @param string $group_id Group id of the group (required)
-# @param GroupUpdateParticipantsPayload $data Group update payload (required)
-{
-    my $params = {
-    'instance_key' => {
-        data_type => 'string',
-        description => 'Instance key',
-        required => '1',
-    },
-    'group_id' => {
-        data_type => 'string',
-        description => 'Group id of the group',
-        required => '1',
-    },
-    'data' => {
-        data_type => 'GroupUpdateParticipantsPayload',
-        description => 'Group update payload',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_participants_add_post' } = {
-        summary => 'Add participant.',
-        params => $params,
-        returns => 'APIResponse',
-        };
-}
-# @return APIResponse
-#
-sub instances_instance_key_groups_group_id_participants_add_post {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'instance_key' is set
-    unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_groups_group_id_participants_add_post");
-    }
-
-    # verify the required parameter 'group_id' is set
-    unless (exists $args{'group_id'}) {
-      croak("Missing the required parameter 'group_id' when calling instances_instance_key_groups_group_id_participants_add_post");
-    }
-
-    # verify the required parameter 'data' is set
-    unless (exists $args{'data'}) {
-      croak("Missing the required parameter 'data' when calling instances_instance_key_groups_group_id_participants_add_post");
-    }
-
-    # parse inputs
-    my $_resource_path = '/instances/{instance_key}/groups/{group_id}/participants/add';
-
-    my $_method = 'POST';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
-
-    # path params
-    if ( exists $args{'instance_key'}) {
-        my $_base_variable = "{" . "instance_key" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    # path params
-    if ( exists $args{'group_id'}) {
-        my $_base_variable = "{" . "group_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'group_id'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
-    # body params
-    if ( exists $args{'data'}) {
-        $_body_data = $args{'data'};
-    }
-
-    # authentication setting, if any
-    my $auth_settings = [qw(ApiKeyAuth )];
-
-    # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
-    return $_response_object;
-}
-
-#
-# instances_instance_key_groups_group_id_participants_demote_put
-#
-# Demote participant.
-#
-# @param string $instance_key Instance key (required)
-# @param string $group_id Group id of the group (required)
-# @param GroupUpdateParticipantsPayload $data Group update payload (required)
-{
-    my $params = {
-    'instance_key' => {
-        data_type => 'string',
-        description => 'Instance key',
-        required => '1',
-    },
-    'group_id' => {
-        data_type => 'string',
-        description => 'Group id of the group',
-        required => '1',
-    },
-    'data' => {
-        data_type => 'GroupUpdateParticipantsPayload',
-        description => 'Group update payload',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_participants_demote_put' } = {
-        summary => 'Demote participant.',
-        params => $params,
-        returns => 'APIResponse',
-        };
-}
-# @return APIResponse
-#
-sub instances_instance_key_groups_group_id_participants_demote_put {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'instance_key' is set
-    unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_groups_group_id_participants_demote_put");
-    }
-
-    # verify the required parameter 'group_id' is set
-    unless (exists $args{'group_id'}) {
-      croak("Missing the required parameter 'group_id' when calling instances_instance_key_groups_group_id_participants_demote_put");
-    }
-
-    # verify the required parameter 'data' is set
-    unless (exists $args{'data'}) {
-      croak("Missing the required parameter 'data' when calling instances_instance_key_groups_group_id_participants_demote_put");
-    }
-
-    # parse inputs
-    my $_resource_path = '/instances/{instance_key}/groups/{group_id}/participants/demote';
-
-    my $_method = 'PUT';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
-
-    # path params
-    if ( exists $args{'instance_key'}) {
-        my $_base_variable = "{" . "instance_key" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    # path params
-    if ( exists $args{'group_id'}) {
-        my $_base_variable = "{" . "group_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'group_id'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
-    # body params
-    if ( exists $args{'data'}) {
-        $_body_data = $args{'data'};
-    }
-
-    # authentication setting, if any
-    my $auth_settings = [qw(ApiKeyAuth )];
-
-    # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
-    return $_response_object;
-}
-
-#
-# instances_instance_key_groups_group_id_participants_promote_put
-#
-# Promote participant.
-#
-# @param string $instance_key Instance key (required)
-# @param string $group_id Group id of the group (required)
-# @param GroupUpdateParticipantsPayload $data Group update payload (required)
-{
-    my $params = {
-    'instance_key' => {
-        data_type => 'string',
-        description => 'Instance key',
-        required => '1',
-    },
-    'group_id' => {
-        data_type => 'string',
-        description => 'Group id of the group',
-        required => '1',
-    },
-    'data' => {
-        data_type => 'GroupUpdateParticipantsPayload',
-        description => 'Group update payload',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_participants_promote_put' } = {
-        summary => 'Promote participant.',
-        params => $params,
-        returns => 'APIResponse',
-        };
-}
-# @return APIResponse
-#
-sub instances_instance_key_groups_group_id_participants_promote_put {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'instance_key' is set
-    unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_groups_group_id_participants_promote_put");
-    }
-
-    # verify the required parameter 'group_id' is set
-    unless (exists $args{'group_id'}) {
-      croak("Missing the required parameter 'group_id' when calling instances_instance_key_groups_group_id_participants_promote_put");
-    }
-
-    # verify the required parameter 'data' is set
-    unless (exists $args{'data'}) {
-      croak("Missing the required parameter 'data' when calling instances_instance_key_groups_group_id_participants_promote_put");
-    }
-
-    # parse inputs
-    my $_resource_path = '/instances/{instance_key}/groups/{group_id}/participants/promote';
-
-    my $_method = 'PUT';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
-
-    # path params
-    if ( exists $args{'instance_key'}) {
-        my $_base_variable = "{" . "instance_key" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    # path params
-    if ( exists $args{'group_id'}) {
-        my $_base_variable = "{" . "group_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'group_id'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
-    # body params
-    if ( exists $args{'data'}) {
-        $_body_data = $args{'data'};
-    }
-
-    # authentication setting, if any
-    my $auth_settings = [qw(ApiKeyAuth )];
-
-    # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
-    return $_response_object;
-}
-
-#
-# instances_instance_key_groups_group_id_participants_remove_delete
-#
-# Remove participant.
-#
-# @param string $instance_key Instance key (required)
-# @param string $group_id Group id of the group (required)
-# @param GroupUpdateParticipantsPayload $data Group update payload (required)
-{
-    my $params = {
-    'instance_key' => {
-        data_type => 'string',
-        description => 'Instance key',
-        required => '1',
-    },
-    'group_id' => {
-        data_type => 'string',
-        description => 'Group id of the group',
-        required => '1',
-    },
-    'data' => {
-        data_type => 'GroupUpdateParticipantsPayload',
-        description => 'Group update payload',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_participants_remove_delete' } = {
-        summary => 'Remove participant.',
-        params => $params,
-        returns => 'APIResponse',
-        };
-}
-# @return APIResponse
-#
-sub instances_instance_key_groups_group_id_participants_remove_delete {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'instance_key' is set
-    unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_groups_group_id_participants_remove_delete");
-    }
-
-    # verify the required parameter 'group_id' is set
-    unless (exists $args{'group_id'}) {
-      croak("Missing the required parameter 'group_id' when calling instances_instance_key_groups_group_id_participants_remove_delete");
-    }
-
-    # verify the required parameter 'data' is set
-    unless (exists $args{'data'}) {
-      croak("Missing the required parameter 'data' when calling instances_instance_key_groups_group_id_participants_remove_delete");
-    }
-
-    # parse inputs
-    my $_resource_path = '/instances/{instance_key}/groups/{group_id}/participants/remove';
-
-    my $_method = 'DELETE';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
-
-    # path params
-    if ( exists $args{'instance_key'}) {
-        my $_base_variable = "{" . "instance_key" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    # path params
-    if ( exists $args{'group_id'}) {
-        my $_base_variable = "{" . "group_id" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'group_id'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
-    # body params
-    if ( exists $args{'data'}) {
-        $_body_data = $args{'data'};
-    }
-
-    # authentication setting, if any
-    my $auth_settings = [qw(ApiKeyAuth )];
-
-    # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
-    return $_response_object;
-}
-
-#
-# instances_instance_key_groups_group_id_profile_pic_put
+# set_group_picture
 #
 # Set group picture.
 #
 # @param string $instance_key Instance key (required)
 # @param string $group_id Group id of the group (required)
-# @param InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest $instances_instance_key_groups_group_id_profile_pic_put_request  (required)
+# @param SetGroupPictureRequest $set_group_picture_request  (required)
 {
     my $params = {
     'instance_key' => {
@@ -1363,13 +1446,13 @@ sub instances_instance_key_groups_group_id_participants_remove_delete {
         description => 'Group id of the group',
         required => '1',
     },
-    'instances_instance_key_groups_group_id_profile_pic_put_request' => {
-        data_type => 'InstancesInstanceKeyGroupsGroupIdProfilePicPutRequest',
+    'set_group_picture_request' => {
+        data_type => 'SetGroupPictureRequest',
         description => '',
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_group_id_profile_pic_put' } = {
+    __PACKAGE__->method_documentation->{ 'set_group_picture' } = {
         summary => 'Set group picture.',
         params => $params,
         returns => 'APIResponse',
@@ -1377,22 +1460,22 @@ sub instances_instance_key_groups_group_id_participants_remove_delete {
 }
 # @return APIResponse
 #
-sub instances_instance_key_groups_group_id_profile_pic_put {
+sub set_group_picture {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_groups_group_id_profile_pic_put");
+      croak("Missing the required parameter 'instance_key' when calling set_group_picture");
     }
 
     # verify the required parameter 'group_id' is set
     unless (exists $args{'group_id'}) {
-      croak("Missing the required parameter 'group_id' when calling instances_instance_key_groups_group_id_profile_pic_put");
+      croak("Missing the required parameter 'group_id' when calling set_group_picture");
     }
 
-    # verify the required parameter 'instances_instance_key_groups_group_id_profile_pic_put_request' is set
-    unless (exists $args{'instances_instance_key_groups_group_id_profile_pic_put_request'}) {
-      croak("Missing the required parameter 'instances_instance_key_groups_group_id_profile_pic_put_request' when calling instances_instance_key_groups_group_id_profile_pic_put");
+    # verify the required parameter 'set_group_picture_request' is set
+    unless (exists $args{'set_group_picture_request'}) {
+      croak("Missing the required parameter 'set_group_picture_request' when calling set_group_picture");
     }
 
     # parse inputs
@@ -1426,93 +1509,10 @@ sub instances_instance_key_groups_group_id_profile_pic_put {
 
     my $_body_data;
     # body params
-    if ( exists $args{'instances_instance_key_groups_group_id_profile_pic_put_request'}) {
-        $_body_data = $args{'instances_instance_key_groups_group_id_profile_pic_put_request'};
+    if ( exists $args{'set_group_picture_request'}) {
+        $_body_data = $args{'set_group_picture_request'};
     }
 
-    # authentication setting, if any
-    my $auth_settings = [qw(ApiKeyAuth )];
-
-    # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
-    return $_response_object;
-}
-
-#
-# instances_instance_key_groups_invite_info_get
-#
-# Get group from invite link.
-#
-# @param string $instance_key Instance key (required)
-# @param string $invite_link The invite link to check (required)
-{
-    my $params = {
-    'instance_key' => {
-        data_type => 'string',
-        description => 'Instance key',
-        required => '1',
-    },
-    'invite_link' => {
-        data_type => 'string',
-        description => 'The invite link to check',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_groups_invite_info_get' } = {
-        summary => 'Get group from invite link.',
-        params => $params,
-        returns => 'APIResponse',
-        };
-}
-# @return APIResponse
-#
-sub instances_instance_key_groups_invite_info_get {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'instance_key' is set
-    unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_groups_invite_info_get");
-    }
-
-    # verify the required parameter 'invite_link' is set
-    unless (exists $args{'invite_link'}) {
-      croak("Missing the required parameter 'invite_link' when calling instances_instance_key_groups_invite_info_get");
-    }
-
-    # parse inputs
-    my $_resource_path = '/instances/{instance_key}/groups/invite-info';
-
-    my $_method = 'GET';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
-
-    # query params
-    if ( exists $args{'invite_link'}) {
-        $query_params->{'invite_link'} = $self->{api_client}->to_query_value($args{'invite_link'});
-    }
-
-    # path params
-    if ( exists $args{'instance_key'}) {
-        my $_base_variable = "{" . "instance_key" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
     # authentication setting, if any
     my $auth_settings = [qw(ApiKeyAuth )];
 

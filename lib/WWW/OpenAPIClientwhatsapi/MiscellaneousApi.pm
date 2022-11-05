@@ -49,7 +49,7 @@ sub new {
 
 
 #
-# instances_instance_key_misc_profile_pic_get
+# get_profile_pic
 #
 # Get profile pic.
 #
@@ -68,7 +68,7 @@ sub new {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_misc_profile_pic_get' } = {
+    __PACKAGE__->method_documentation->{ 'get_profile_pic' } = {
         summary => 'Get profile pic.',
         params => $params,
         returns => 'APIResponse',
@@ -76,17 +76,17 @@ sub new {
 }
 # @return APIResponse
 #
-sub instances_instance_key_misc_profile_pic_get {
+sub get_profile_pic {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_misc_profile_pic_get");
+      croak("Missing the required parameter 'instance_key' when calling get_profile_pic");
     }
 
     # verify the required parameter 'jid' is set
     unless (exists $args{'jid'}) {
-      croak("Missing the required parameter 'jid' when calling instances_instance_key_misc_profile_pic_get");
+      croak("Missing the required parameter 'jid' when calling get_profile_pic");
     }
 
     # parse inputs
@@ -132,7 +132,7 @@ sub instances_instance_key_misc_profile_pic_get {
 }
 
 #
-# instances_instance_key_misc_user_info_post
+# get_users_info
 #
 # Fetches the users info.
 #
@@ -151,7 +151,7 @@ sub instances_instance_key_misc_profile_pic_get {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_misc_user_info_post' } = {
+    __PACKAGE__->method_documentation->{ 'get_users_info' } = {
         summary => 'Fetches the users info.',
         params => $params,
         returns => 'APIResponse',
@@ -159,17 +159,17 @@ sub instances_instance_key_misc_profile_pic_get {
 }
 # @return APIResponse
 #
-sub instances_instance_key_misc_user_info_post {
+sub get_users_info {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_misc_user_info_post");
+      croak("Missing the required parameter 'instance_key' when calling get_users_info");
     }
 
     # verify the required parameter 'data' is set
     unless (exists $args{'data'}) {
-      croak("Missing the required parameter 'data' when calling instances_instance_key_misc_user_info_post");
+      croak("Missing the required parameter 'data' when calling get_users_info");
     }
 
     # parse inputs

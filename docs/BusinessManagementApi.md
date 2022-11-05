@@ -9,11 +9,11 @@ All URIs are relative to */api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**instances_instance_key_business_catalog_get**](BusinessManagementApi.md#instances_instance_key_business_catalog_get) | **GET** /instances/{instance_key}/business/catalog | Fetches the catlog.
+[**fetch_catlog**](BusinessManagementApi.md#fetch_catlog) | **GET** /instances/{instance_key}/business/catalog | Fetches the catlog.
 
 
-# **instances_instance_key_business_catalog_get**
-> APIResponse instances_instance_key_business_catalog_get(instance_key => $instance_key)
+# **fetch_catlog**
+> APIResponse fetch_catlog(instance_key => $instance_key)
 
 Fetches the catlog.
 
@@ -34,11 +34,11 @@ my $api_instance = WWW::OpenAPIClient::BusinessManagementApi->new(
 my $instance_key = "instance_key_example"; # string | Instance key
 
 eval {
-    my $result = $api_instance->instances_instance_key_business_catalog_get(instance_key => $instance_key);
+    my $result = $api_instance->fetch_catlog(instance_key => $instance_key);
     print Dumper($result);
 };
 if ($@) {
-    warn "Exception when calling BusinessManagementApi->instances_instance_key_business_catalog_get: $@\n";
+    warn "Exception when calling BusinessManagementApi->fetch_catlog: $@\n";
 }
 ```
 

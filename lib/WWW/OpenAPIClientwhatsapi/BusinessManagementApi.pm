@@ -49,7 +49,7 @@ sub new {
 
 
 #
-# instances_instance_key_business_catalog_get
+# fetch_catlog
 #
 # Fetches the catlog.
 #
@@ -62,7 +62,7 @@ sub new {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_business_catalog_get' } = {
+    __PACKAGE__->method_documentation->{ 'fetch_catlog' } = {
         summary => 'Fetches the catlog.',
         params => $params,
         returns => 'APIResponse',
@@ -70,12 +70,12 @@ sub new {
 }
 # @return APIResponse
 #
-sub instances_instance_key_business_catalog_get {
+sub fetch_catlog {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_business_catalog_get");
+      croak("Missing the required parameter 'instance_key' when calling fetch_catlog");
     }
 
     # parse inputs

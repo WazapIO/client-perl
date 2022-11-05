@@ -49,13 +49,13 @@ sub new {
 
 
 #
-# instances_instance_key_send_audio_post
+# send_audio
 #
 # Send raw audio.
 #
 # @param string $instance_key Instance key (required)
 # @param string $to The recipient&#39;s number (required)
-# @param InstancesInstanceKeySendAudioPostRequest $instances_instance_key_send_audio_post_request  (required)
+# @param SendAudioRequest $send_audio_request  (required)
 # @param string $caption Attached caption (optional)
 {
     my $params = {
@@ -69,8 +69,8 @@ sub new {
         description => 'The recipient&#39;s number',
         required => '1',
     },
-    'instances_instance_key_send_audio_post_request' => {
-        data_type => 'InstancesInstanceKeySendAudioPostRequest',
+    'send_audio_request' => {
+        data_type => 'SendAudioRequest',
         description => '',
         required => '1',
     },
@@ -80,7 +80,7 @@ sub new {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_send_audio_post' } = {
+    __PACKAGE__->method_documentation->{ 'send_audio' } = {
         summary => 'Send raw audio.',
         params => $params,
         returns => 'APIResponse',
@@ -88,22 +88,22 @@ sub new {
 }
 # @return APIResponse
 #
-sub instances_instance_key_send_audio_post {
+sub send_audio {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_send_audio_post");
+      croak("Missing the required parameter 'instance_key' when calling send_audio");
     }
 
     # verify the required parameter 'to' is set
     unless (exists $args{'to'}) {
-      croak("Missing the required parameter 'to' when calling instances_instance_key_send_audio_post");
+      croak("Missing the required parameter 'to' when calling send_audio");
     }
 
-    # verify the required parameter 'instances_instance_key_send_audio_post_request' is set
-    unless (exists $args{'instances_instance_key_send_audio_post_request'}) {
-      croak("Missing the required parameter 'instances_instance_key_send_audio_post_request' when calling instances_instance_key_send_audio_post");
+    # verify the required parameter 'send_audio_request' is set
+    unless (exists $args{'send_audio_request'}) {
+      croak("Missing the required parameter 'send_audio_request' when calling send_audio");
     }
 
     # parse inputs
@@ -140,8 +140,8 @@ sub instances_instance_key_send_audio_post {
 
     my $_body_data;
     # body params
-    if ( exists $args{'instances_instance_key_send_audio_post_request'}) {
-        $_body_data = $args{'instances_instance_key_send_audio_post_request'};
+    if ( exists $args{'send_audio_request'}) {
+        $_body_data = $args{'send_audio_request'};
     }
 
     # authentication setting, if any
@@ -159,90 +159,7 @@ sub instances_instance_key_send_audio_post {
 }
 
 #
-# instances_instance_key_send_button_media_post
-#
-# Send a button message with a media header.
-#
-# @param string $instance_key Instance key (required)
-# @param ButtonMessageWithMediaPayload $data Message data (required)
-{
-    my $params = {
-    'instance_key' => {
-        data_type => 'string',
-        description => 'Instance key',
-        required => '1',
-    },
-    'data' => {
-        data_type => 'ButtonMessageWithMediaPayload',
-        description => 'Message data',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_send_button_media_post' } = {
-        summary => 'Send a button message with a media header.',
-        params => $params,
-        returns => 'APIResponse',
-        };
-}
-# @return APIResponse
-#
-sub instances_instance_key_send_button_media_post {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'instance_key' is set
-    unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_send_button_media_post");
-    }
-
-    # verify the required parameter 'data' is set
-    unless (exists $args{'data'}) {
-      croak("Missing the required parameter 'data' when calling instances_instance_key_send_button_media_post");
-    }
-
-    # parse inputs
-    my $_resource_path = '/instances/{instance_key}/send/button-media';
-
-    my $_method = 'POST';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
-
-    # path params
-    if ( exists $args{'instance_key'}) {
-        my $_base_variable = "{" . "instance_key" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
-    # body params
-    if ( exists $args{'data'}) {
-        $_body_data = $args{'data'};
-    }
-
-    # authentication setting, if any
-    my $auth_settings = [qw(ApiKeyAuth )];
-
-    # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
-    return $_response_object;
-}
-
-#
-# instances_instance_key_send_buttons_post
+# send_button_message
 #
 # Send a button message.
 #
@@ -261,7 +178,7 @@ sub instances_instance_key_send_button_media_post {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_send_buttons_post' } = {
+    __PACKAGE__->method_documentation->{ 'send_button_message' } = {
         summary => 'Send a button message.',
         params => $params,
         returns => 'APIResponse',
@@ -269,17 +186,17 @@ sub instances_instance_key_send_button_media_post {
 }
 # @return APIResponse
 #
-sub instances_instance_key_send_buttons_post {
+sub send_button_message {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_send_buttons_post");
+      croak("Missing the required parameter 'instance_key' when calling send_button_message");
     }
 
     # verify the required parameter 'data' is set
     unless (exists $args{'data'}) {
-      croak("Missing the required parameter 'data' when calling instances_instance_key_send_buttons_post");
+      croak("Missing the required parameter 'data' when calling send_button_message");
     }
 
     # parse inputs
@@ -325,7 +242,90 @@ sub instances_instance_key_send_buttons_post {
 }
 
 #
-# instances_instance_key_send_contact_post
+# send_button_with_media
+#
+# Send a button message with a media header.
+#
+# @param string $instance_key Instance key (required)
+# @param ButtonMessageWithMediaPayload $data Message data (required)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    'data' => {
+        data_type => 'ButtonMessageWithMediaPayload',
+        description => 'Message data',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'send_button_with_media' } = {
+        summary => 'Send a button message with a media header.',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub send_button_with_media {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling send_button_with_media");
+    }
+
+    # verify the required parameter 'data' is set
+    unless (exists $args{'data'}) {
+      croak("Missing the required parameter 'data' when calling send_button_with_media");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/send/button-media';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'data'}) {
+        $_body_data = $args{'data'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
+#
+# send_contact
 #
 # Send a contact message.
 #
@@ -344,7 +344,7 @@ sub instances_instance_key_send_buttons_post {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_send_contact_post' } = {
+    __PACKAGE__->method_documentation->{ 'send_contact' } = {
         summary => 'Send a contact message.',
         params => $params,
         returns => 'APIResponse',
@@ -352,17 +352,17 @@ sub instances_instance_key_send_buttons_post {
 }
 # @return APIResponse
 #
-sub instances_instance_key_send_contact_post {
+sub send_contact {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_send_contact_post");
+      croak("Missing the required parameter 'instance_key' when calling send_contact");
     }
 
     # verify the required parameter 'data' is set
     unless (exists $args{'data'}) {
-      croak("Missing the required parameter 'data' when calling instances_instance_key_send_contact_post");
+      croak("Missing the required parameter 'data' when calling send_contact");
     }
 
     # parse inputs
@@ -408,13 +408,13 @@ sub instances_instance_key_send_contact_post {
 }
 
 #
-# instances_instance_key_send_document_post
+# send_document
 #
 # Send raw document.
 #
 # @param string $instance_key Instance key (required)
 # @param string $to The recipient&#39;s number (required)
-# @param InstancesInstanceKeySendDocumentPostRequest $instances_instance_key_send_document_post_request  (required)
+# @param SendDocumentRequest $send_document_request  (required)
 # @param string $caption Attached caption (optional)
 {
     my $params = {
@@ -428,8 +428,8 @@ sub instances_instance_key_send_contact_post {
         description => 'The recipient&#39;s number',
         required => '1',
     },
-    'instances_instance_key_send_document_post_request' => {
-        data_type => 'InstancesInstanceKeySendDocumentPostRequest',
+    'send_document_request' => {
+        data_type => 'SendDocumentRequest',
         description => '',
         required => '1',
     },
@@ -439,7 +439,7 @@ sub instances_instance_key_send_contact_post {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_send_document_post' } = {
+    __PACKAGE__->method_documentation->{ 'send_document' } = {
         summary => 'Send raw document.',
         params => $params,
         returns => 'APIResponse',
@@ -447,22 +447,22 @@ sub instances_instance_key_send_contact_post {
 }
 # @return APIResponse
 #
-sub instances_instance_key_send_document_post {
+sub send_document {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_send_document_post");
+      croak("Missing the required parameter 'instance_key' when calling send_document");
     }
 
     # verify the required parameter 'to' is set
     unless (exists $args{'to'}) {
-      croak("Missing the required parameter 'to' when calling instances_instance_key_send_document_post");
+      croak("Missing the required parameter 'to' when calling send_document");
     }
 
-    # verify the required parameter 'instances_instance_key_send_document_post_request' is set
-    unless (exists $args{'instances_instance_key_send_document_post_request'}) {
-      croak("Missing the required parameter 'instances_instance_key_send_document_post_request' when calling instances_instance_key_send_document_post");
+    # verify the required parameter 'send_document_request' is set
+    unless (exists $args{'send_document_request'}) {
+      croak("Missing the required parameter 'send_document_request' when calling send_document");
     }
 
     # parse inputs
@@ -499,8 +499,8 @@ sub instances_instance_key_send_document_post {
 
     my $_body_data;
     # body params
-    if ( exists $args{'instances_instance_key_send_document_post_request'}) {
-        $_body_data = $args{'instances_instance_key_send_document_post_request'};
+    if ( exists $args{'send_document_request'}) {
+        $_body_data = $args{'send_document_request'};
     }
 
     # authentication setting, if any
@@ -518,13 +518,13 @@ sub instances_instance_key_send_document_post {
 }
 
 #
-# instances_instance_key_send_image_post
+# send_image
 #
 # Send raw image.
 #
 # @param string $instance_key Instance key (required)
 # @param string $to The recipient&#39;s number (required)
-# @param InstancesInstanceKeySendImagePostRequest $instances_instance_key_send_image_post_request  (required)
+# @param SendImageRequest $send_image_request  (required)
 # @param string $caption Attached caption (optional)
 {
     my $params = {
@@ -538,8 +538,8 @@ sub instances_instance_key_send_document_post {
         description => 'The recipient&#39;s number',
         required => '1',
     },
-    'instances_instance_key_send_image_post_request' => {
-        data_type => 'InstancesInstanceKeySendImagePostRequest',
+    'send_image_request' => {
+        data_type => 'SendImageRequest',
         description => '',
         required => '1',
     },
@@ -549,7 +549,7 @@ sub instances_instance_key_send_document_post {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_send_image_post' } = {
+    __PACKAGE__->method_documentation->{ 'send_image' } = {
         summary => 'Send raw image.',
         params => $params,
         returns => 'APIResponse',
@@ -557,22 +557,22 @@ sub instances_instance_key_send_document_post {
 }
 # @return APIResponse
 #
-sub instances_instance_key_send_image_post {
+sub send_image {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_send_image_post");
+      croak("Missing the required parameter 'instance_key' when calling send_image");
     }
 
     # verify the required parameter 'to' is set
     unless (exists $args{'to'}) {
-      croak("Missing the required parameter 'to' when calling instances_instance_key_send_image_post");
+      croak("Missing the required parameter 'to' when calling send_image");
     }
 
-    # verify the required parameter 'instances_instance_key_send_image_post_request' is set
-    unless (exists $args{'instances_instance_key_send_image_post_request'}) {
-      croak("Missing the required parameter 'instances_instance_key_send_image_post_request' when calling instances_instance_key_send_image_post");
+    # verify the required parameter 'send_image_request' is set
+    unless (exists $args{'send_image_request'}) {
+      croak("Missing the required parameter 'send_image_request' when calling send_image");
     }
 
     # parse inputs
@@ -609,8 +609,8 @@ sub instances_instance_key_send_image_post {
 
     my $_body_data;
     # body params
-    if ( exists $args{'instances_instance_key_send_image_post_request'}) {
-        $_body_data = $args{'instances_instance_key_send_image_post_request'};
+    if ( exists $args{'send_image_request'}) {
+        $_body_data = $args{'send_image_request'};
     }
 
     # authentication setting, if any
@@ -628,7 +628,7 @@ sub instances_instance_key_send_image_post {
 }
 
 #
-# instances_instance_key_send_list_post
+# send_list_message
 #
 # Send a List message.
 #
@@ -647,7 +647,7 @@ sub instances_instance_key_send_image_post {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_send_list_post' } = {
+    __PACKAGE__->method_documentation->{ 'send_list_message' } = {
         summary => 'Send a List message.',
         params => $params,
         returns => 'APIResponse',
@@ -655,17 +655,17 @@ sub instances_instance_key_send_image_post {
 }
 # @return APIResponse
 #
-sub instances_instance_key_send_list_post {
+sub send_list_message {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_send_list_post");
+      croak("Missing the required parameter 'instance_key' when calling send_list_message");
     }
 
     # verify the required parameter 'data' is set
     unless (exists $args{'data'}) {
-      croak("Missing the required parameter 'data' when calling instances_instance_key_send_list_post");
+      croak("Missing the required parameter 'data' when calling send_list_message");
     }
 
     # parse inputs
@@ -711,7 +711,7 @@ sub instances_instance_key_send_list_post {
 }
 
 #
-# instances_instance_key_send_location_post
+# send_location
 #
 # Send a location message.
 #
@@ -730,7 +730,7 @@ sub instances_instance_key_send_list_post {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_send_location_post' } = {
+    __PACKAGE__->method_documentation->{ 'send_location' } = {
         summary => 'Send a location message.',
         params => $params,
         returns => 'APIResponse',
@@ -738,17 +738,17 @@ sub instances_instance_key_send_list_post {
 }
 # @return APIResponse
 #
-sub instances_instance_key_send_location_post {
+sub send_location {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_send_location_post");
+      croak("Missing the required parameter 'instance_key' when calling send_location");
     }
 
     # verify the required parameter 'data' is set
     unless (exists $args{'data'}) {
-      croak("Missing the required parameter 'data' when calling instances_instance_key_send_location_post");
+      croak("Missing the required parameter 'data' when calling send_location");
     }
 
     # parse inputs
@@ -794,7 +794,7 @@ sub instances_instance_key_send_location_post {
 }
 
 #
-# instances_instance_key_send_media_post
+# send_media_message
 #
 # Send a media message.
 #
@@ -813,7 +813,7 @@ sub instances_instance_key_send_location_post {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_send_media_post' } = {
+    __PACKAGE__->method_documentation->{ 'send_media_message' } = {
         summary => 'Send a media message.',
         params => $params,
         returns => 'APIResponse',
@@ -821,17 +821,17 @@ sub instances_instance_key_send_location_post {
 }
 # @return APIResponse
 #
-sub instances_instance_key_send_media_post {
+sub send_media_message {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_send_media_post");
+      croak("Missing the required parameter 'instance_key' when calling send_media_message");
     }
 
     # verify the required parameter 'data' is set
     unless (exists $args{'data'}) {
-      croak("Missing the required parameter 'data' when calling instances_instance_key_send_media_post");
+      croak("Missing the required parameter 'data' when calling send_media_message");
     }
 
     # parse inputs
@@ -877,7 +877,7 @@ sub instances_instance_key_send_media_post {
 }
 
 #
-# instances_instance_key_send_poll_post
+# send_poll_message
 #
 # Send a Poll message.
 #
@@ -896,7 +896,7 @@ sub instances_instance_key_send_media_post {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_send_poll_post' } = {
+    __PACKAGE__->method_documentation->{ 'send_poll_message' } = {
         summary => 'Send a Poll message.',
         params => $params,
         returns => 'APIResponse',
@@ -904,17 +904,17 @@ sub instances_instance_key_send_media_post {
 }
 # @return APIResponse
 #
-sub instances_instance_key_send_poll_post {
+sub send_poll_message {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_send_poll_post");
+      croak("Missing the required parameter 'instance_key' when calling send_poll_message");
     }
 
     # verify the required parameter 'data' is set
     unless (exists $args{'data'}) {
-      croak("Missing the required parameter 'data' when calling instances_instance_key_send_poll_post");
+      croak("Missing the required parameter 'data' when calling send_poll_message");
     }
 
     # parse inputs
@@ -960,90 +960,7 @@ sub instances_instance_key_send_poll_post {
 }
 
 #
-# instances_instance_key_send_template_media_post
-#
-# Send a template message with media.
-#
-# @param string $instance_key Instance key (required)
-# @param TemplateButtonWithMediaPayload $data Message data (required)
-{
-    my $params = {
-    'instance_key' => {
-        data_type => 'string',
-        description => 'Instance key',
-        required => '1',
-    },
-    'data' => {
-        data_type => 'TemplateButtonWithMediaPayload',
-        description => 'Message data',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_send_template_media_post' } = {
-        summary => 'Send a template message with media.',
-        params => $params,
-        returns => 'APIResponse',
-        };
-}
-# @return APIResponse
-#
-sub instances_instance_key_send_template_media_post {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'instance_key' is set
-    unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_send_template_media_post");
-    }
-
-    # verify the required parameter 'data' is set
-    unless (exists $args{'data'}) {
-      croak("Missing the required parameter 'data' when calling instances_instance_key_send_template_media_post");
-    }
-
-    # parse inputs
-    my $_resource_path = '/instances/{instance_key}/send/template-media';
-
-    my $_method = 'POST';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
-
-    # path params
-    if ( exists $args{'instance_key'}) {
-        my $_base_variable = "{" . "instance_key" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
-    # body params
-    if ( exists $args{'data'}) {
-        $_body_data = $args{'data'};
-    }
-
-    # authentication setting, if any
-    my $auth_settings = [qw(ApiKeyAuth )];
-
-    # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
-    return $_response_object;
-}
-
-#
-# instances_instance_key_send_template_post
+# send_template
 #
 # Send a template message.
 #
@@ -1062,7 +979,7 @@ sub instances_instance_key_send_template_media_post {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_send_template_post' } = {
+    __PACKAGE__->method_documentation->{ 'send_template' } = {
         summary => 'Send a template message.',
         params => $params,
         returns => 'APIResponse',
@@ -1070,17 +987,17 @@ sub instances_instance_key_send_template_media_post {
 }
 # @return APIResponse
 #
-sub instances_instance_key_send_template_post {
+sub send_template {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_send_template_post");
+      croak("Missing the required parameter 'instance_key' when calling send_template");
     }
 
     # verify the required parameter 'data' is set
     unless (exists $args{'data'}) {
-      croak("Missing the required parameter 'data' when calling instances_instance_key_send_template_post");
+      croak("Missing the required parameter 'data' when calling send_template");
     }
 
     # parse inputs
@@ -1126,7 +1043,90 @@ sub instances_instance_key_send_template_post {
 }
 
 #
-# instances_instance_key_send_text_post
+# send_template_with_media
+#
+# Send a template message with media.
+#
+# @param string $instance_key Instance key (required)
+# @param TemplateButtonWithMediaPayload $data Message data (required)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    'data' => {
+        data_type => 'TemplateButtonWithMediaPayload',
+        description => 'Message data',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'send_template_with_media' } = {
+        summary => 'Send a template message with media.',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub send_template_with_media {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling send_template_with_media");
+    }
+
+    # verify the required parameter 'data' is set
+    unless (exists $args{'data'}) {
+      croak("Missing the required parameter 'data' when calling send_template_with_media");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/send/template-media';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'data'}) {
+        $_body_data = $args{'data'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
+#
+# send_text_message
 #
 # Send a text message.
 #
@@ -1145,7 +1145,7 @@ sub instances_instance_key_send_template_post {
         required => '1',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_send_text_post' } = {
+    __PACKAGE__->method_documentation->{ 'send_text_message' } = {
         summary => 'Send a text message.',
         params => $params,
         returns => 'APIResponse',
@@ -1153,17 +1153,17 @@ sub instances_instance_key_send_template_post {
 }
 # @return APIResponse
 #
-sub instances_instance_key_send_text_post {
+sub send_text_message {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_send_text_post");
+      croak("Missing the required parameter 'instance_key' when calling send_text_message");
     }
 
     # verify the required parameter 'data' is set
     unless (exists $args{'data'}) {
-      croak("Missing the required parameter 'data' when calling instances_instance_key_send_text_post");
+      croak("Missing the required parameter 'data' when calling send_text_message");
     }
 
     # parse inputs
@@ -1209,112 +1209,13 @@ sub instances_instance_key_send_text_post {
 }
 
 #
-# instances_instance_key_send_upload_post
-#
-# Upload media.
-#
-# @param string $instance_key Instance key (required)
-# @param string $type Media type (required)
-# @param InstancesInstanceKeySendUploadPostRequest $instances_instance_key_send_upload_post_request  (required)
-{
-    my $params = {
-    'instance_key' => {
-        data_type => 'string',
-        description => 'Instance key',
-        required => '1',
-    },
-    'type' => {
-        data_type => 'string',
-        description => 'Media type',
-        required => '1',
-    },
-    'instances_instance_key_send_upload_post_request' => {
-        data_type => 'InstancesInstanceKeySendUploadPostRequest',
-        description => '',
-        required => '1',
-    },
-    };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_send_upload_post' } = {
-        summary => 'Upload media.',
-        params => $params,
-        returns => 'APIResponse',
-        };
-}
-# @return APIResponse
-#
-sub instances_instance_key_send_upload_post {
-    my ($self, %args) = @_;
-
-    # verify the required parameter 'instance_key' is set
-    unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_send_upload_post");
-    }
-
-    # verify the required parameter 'type' is set
-    unless (exists $args{'type'}) {
-      croak("Missing the required parameter 'type' when calling instances_instance_key_send_upload_post");
-    }
-
-    # verify the required parameter 'instances_instance_key_send_upload_post_request' is set
-    unless (exists $args{'instances_instance_key_send_upload_post_request'}) {
-      croak("Missing the required parameter 'instances_instance_key_send_upload_post_request' when calling instances_instance_key_send_upload_post");
-    }
-
-    # parse inputs
-    my $_resource_path = '/instances/{instance_key}/send/upload';
-
-    my $_method = 'POST';
-    my $query_params = {};
-    my $header_params = {};
-    my $form_params = {};
-
-    # 'Accept' and 'Content-Type' header
-    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
-    if ($_header_accept) {
-        $header_params->{'Accept'} = $_header_accept;
-    }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
-
-    # query params
-    if ( exists $args{'type'}) {
-        $query_params->{'type'} = $self->{api_client}->to_query_value($args{'type'});
-    }
-
-    # path params
-    if ( exists $args{'instance_key'}) {
-        my $_base_variable = "{" . "instance_key" . "}";
-        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
-        $_resource_path =~ s/$_base_variable/$_base_value/g;
-    }
-
-    my $_body_data;
-    # body params
-    if ( exists $args{'instances_instance_key_send_upload_post_request'}) {
-        $_body_data = $args{'instances_instance_key_send_upload_post_request'};
-    }
-
-    # authentication setting, if any
-    my $auth_settings = [qw(ApiKeyAuth )];
-
-    # make the API Call
-    my $response = $self->{api_client}->call_api($_resource_path, $_method,
-                                           $query_params, $form_params,
-                                           $header_params, $_body_data, $auth_settings);
-    if (!$response) {
-        return;
-    }
-    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
-    return $_response_object;
-}
-
-#
-# instances_instance_key_send_video_post
+# send_video
 #
 # Send raw video.
 #
 # @param string $instance_key Instance key (required)
 # @param string $to The recipient&#39;s number (required)
-# @param InstancesInstanceKeySendVideoPostRequest $instances_instance_key_send_video_post_request  (required)
+# @param SendVideoRequest $send_video_request  (required)
 # @param string $caption Attached caption (optional)
 {
     my $params = {
@@ -1328,8 +1229,8 @@ sub instances_instance_key_send_upload_post {
         description => 'The recipient&#39;s number',
         required => '1',
     },
-    'instances_instance_key_send_video_post_request' => {
-        data_type => 'InstancesInstanceKeySendVideoPostRequest',
+    'send_video_request' => {
+        data_type => 'SendVideoRequest',
         description => '',
         required => '1',
     },
@@ -1339,7 +1240,7 @@ sub instances_instance_key_send_upload_post {
         required => '0',
     },
     };
-    __PACKAGE__->method_documentation->{ 'instances_instance_key_send_video_post' } = {
+    __PACKAGE__->method_documentation->{ 'send_video' } = {
         summary => 'Send raw video.',
         params => $params,
         returns => 'APIResponse',
@@ -1347,22 +1248,22 @@ sub instances_instance_key_send_upload_post {
 }
 # @return APIResponse
 #
-sub instances_instance_key_send_video_post {
+sub send_video {
     my ($self, %args) = @_;
 
     # verify the required parameter 'instance_key' is set
     unless (exists $args{'instance_key'}) {
-      croak("Missing the required parameter 'instance_key' when calling instances_instance_key_send_video_post");
+      croak("Missing the required parameter 'instance_key' when calling send_video");
     }
 
     # verify the required parameter 'to' is set
     unless (exists $args{'to'}) {
-      croak("Missing the required parameter 'to' when calling instances_instance_key_send_video_post");
+      croak("Missing the required parameter 'to' when calling send_video");
     }
 
-    # verify the required parameter 'instances_instance_key_send_video_post_request' is set
-    unless (exists $args{'instances_instance_key_send_video_post_request'}) {
-      croak("Missing the required parameter 'instances_instance_key_send_video_post_request' when calling instances_instance_key_send_video_post");
+    # verify the required parameter 'send_video_request' is set
+    unless (exists $args{'send_video_request'}) {
+      croak("Missing the required parameter 'send_video_request' when calling send_video");
     }
 
     # parse inputs
@@ -1399,8 +1300,107 @@ sub instances_instance_key_send_video_post {
 
     my $_body_data;
     # body params
-    if ( exists $args{'instances_instance_key_send_video_post_request'}) {
-        $_body_data = $args{'instances_instance_key_send_video_post_request'};
+    if ( exists $args{'send_video_request'}) {
+        $_body_data = $args{'send_video_request'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
+#
+# upload_media
+#
+# Upload media.
+#
+# @param string $instance_key Instance key (required)
+# @param string $type Media type (required)
+# @param UploadMediaRequest $upload_media_request  (required)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    'type' => {
+        data_type => 'string',
+        description => 'Media type',
+        required => '1',
+    },
+    'upload_media_request' => {
+        data_type => 'UploadMediaRequest',
+        description => '',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'upload_media' } = {
+        summary => 'Upload media.',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub upload_media {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling upload_media");
+    }
+
+    # verify the required parameter 'type' is set
+    unless (exists $args{'type'}) {
+      croak("Missing the required parameter 'type' when calling upload_media");
+    }
+
+    # verify the required parameter 'upload_media_request' is set
+    unless (exists $args{'upload_media_request'}) {
+      croak("Missing the required parameter 'upload_media_request' when calling upload_media");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/send/upload';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # query params
+    if ( exists $args{'type'}) {
+        $query_params->{'type'} = $self->{api_client}->to_query_value($args{'type'});
+    }
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'upload_media_request'}) {
+        $_body_data = $args{'upload_media_request'};
     }
 
     # authentication setting, if any
