@@ -49,6 +49,116 @@ sub new {
 
 
 #
+# download_media
+#
+# Download media
+#
+# @param string $instance_key Instance key (required)
+# @param string $file_type File type (required)
+# @param FileUpload $data Media data (required)
+# @param string $response_type Response type (file, base64) (optional)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    'file_type' => {
+        data_type => 'string',
+        description => 'File type',
+        required => '1',
+    },
+    'data' => {
+        data_type => 'FileUpload',
+        description => 'Media data',
+        required => '1',
+    },
+    'response_type' => {
+        data_type => 'string',
+        description => 'Response type (file, base64)',
+        required => '0',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'download_media' } = {
+        summary => 'Download media',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub download_media {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling download_media");
+    }
+
+    # verify the required parameter 'file_type' is set
+    unless (exists $args{'file_type'}) {
+      croak("Missing the required parameter 'file_type' when calling download_media");
+    }
+
+    # verify the required parameter 'data' is set
+    unless (exists $args{'data'}) {
+      croak("Missing the required parameter 'data' when calling download_media");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/misc/download';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # query params
+    if ( exists $args{'file_type'}) {
+        $query_params->{'file_type'} = $self->{api_client}->to_query_value($args{'file_type'});
+    }
+
+    # query params
+    if ( exists $args{'response_type'}) {
+        $query_params->{'response_type'} = $self->{api_client}->to_query_value($args{'response_type'});
+    }
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'data'}) {
+        $_body_data = $args{'data'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
+#
 # get_profile_pic
 #
 # Get profile pic.
@@ -198,6 +308,188 @@ sub get_users_info {
     # body params
     if ( exists $args{'data'}) {
         $_body_data = $args{'data'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
+#
+# set_chat_presence
+#
+# Set chat presence
+#
+# @param string $instance_key Instance key (required)
+# @param string $jid JID (required)
+# @param string $presence Presence (required)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    'jid' => {
+        data_type => 'string',
+        description => 'JID',
+        required => '1',
+    },
+    'presence' => {
+        data_type => 'string',
+        description => 'Presence',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'set_chat_presence' } = {
+        summary => 'Set chat presence',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub set_chat_presence {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling set_chat_presence");
+    }
+
+    # verify the required parameter 'jid' is set
+    unless (exists $args{'jid'}) {
+      croak("Missing the required parameter 'jid' when calling set_chat_presence");
+    }
+
+    # verify the required parameter 'presence' is set
+    unless (exists $args{'presence'}) {
+      croak("Missing the required parameter 'presence' when calling set_chat_presence");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/misc/chat-presence';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # query params
+    if ( exists $args{'jid'}) {
+        $query_params->{'jid'} = $self->{api_client}->to_query_value($args{'jid'});
+    }
+
+    # query params
+    if ( exists $args{'presence'}) {
+        $query_params->{'presence'} = $self->{api_client}->to_query_value($args{'presence'});
+    }
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
+#
+# update_profile_pic
+#
+# Update profile picture
+#
+# @param string $instance_key Instance key (required)
+# @param UpdateProfilePicRequest $update_profile_pic_request  (required)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    'update_profile_pic_request' => {
+        data_type => 'UpdateProfilePicRequest',
+        description => '',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'update_profile_pic' } = {
+        summary => 'Update profile picture',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub update_profile_pic {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling update_profile_pic");
+    }
+
+    # verify the required parameter 'update_profile_pic_request' is set
+    unless (exists $args{'update_profile_pic_request'}) {
+      croak("Missing the required parameter 'update_profile_pic_request' when calling update_profile_pic");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/misc/profile-pic';
+
+    my $_method = 'PUT';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'update_profile_pic_request'}) {
+        $_body_data = $args{'update_profile_pic_request'};
     }
 
     # authentication setting, if any

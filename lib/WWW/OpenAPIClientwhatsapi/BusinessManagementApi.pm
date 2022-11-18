@@ -115,4 +115,87 @@ sub fetch_catlog {
     return $_response_object;
 }
 
+#
+# send_payment_request
+#
+# Send a payment request.
+#
+# @param string $instance_key Instance key (required)
+# @param PaymentRequestPayload $data Data (required)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    'data' => {
+        data_type => 'PaymentRequestPayload',
+        description => 'Data',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'send_payment_request' } = {
+        summary => 'Send a payment request.',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub send_payment_request {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling send_payment_request");
+    }
+
+    # verify the required parameter 'data' is set
+    unless (exists $args{'data'}) {
+      croak("Missing the required parameter 'data' when calling send_payment_request");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/business/payment-request';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'data'}) {
+        $_body_data = $args{'data'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
 1;

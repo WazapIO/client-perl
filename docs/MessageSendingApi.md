@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**send_button_with_media**](MessageSendingApi.md#send_button_with_media) | **POST** /instances/{instance_key}/send/button-media | Send a button message with a media header.
 [**send_contact**](MessageSendingApi.md#send_contact) | **POST** /instances/{instance_key}/send/contact | Send a contact message.
 [**send_document**](MessageSendingApi.md#send_document) | **POST** /instances/{instance_key}/send/document | Send raw document.
+[**send_group_invite**](MessageSendingApi.md#send_group_invite) | **POST** /instances/{instance_key}/send/group-invite | Send a group invite message
 [**send_image**](MessageSendingApi.md#send_image) | **POST** /instances/{instance_key}/send/image | Send raw image.
 [**send_list_message**](MessageSendingApi.md#send_list_message) | **POST** /instances/{instance_key}/send/list | Send a List message.
 [**send_location**](MessageSendingApi.md#send_location) | **POST** /instances/{instance_key}/send/location | Send a location message.
@@ -299,8 +300,61 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **send_group_invite**
+> APIResponse send_group_invite(instance_key => $instance_key, data => $data)
+
+Send a group invite message
+
+Sends a group invite message to the specified number. Don't include \"https://chat.whatsapp.com/\" in the invite code.
+
+### Example
+```perl
+use Data::Dumper;
+use WWW::OpenAPIClient::MessageSendingApi;
+my $api_instance = WWW::OpenAPIClient::MessageSendingApi->new(
+
+    # Configure API key authorization: ApiKeyAuth
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+);
+
+my $instance_key = "instance_key_example"; # string | Instance key
+my $data = WWW::OpenAPIClient::Object::GroupInviteMessagePayload->new(); # GroupInviteMessagePayload | Message data
+
+eval {
+    my $result = $api_instance->send_group_invite(instance_key => $instance_key, data => $data);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling MessageSendingApi->send_group_invite: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **instance_key** | **string**| Instance key | 
+ **data** | [**GroupInviteMessagePayload**](GroupInviteMessagePayload.md)| Message data | 
+
+### Return type
+
+[**APIResponse**](APIResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **send_image**
-> APIResponse send_image(instance_key => $instance_key, to => $to, send_image_request => $send_image_request, caption => $caption)
+> APIResponse send_image(instance_key => $instance_key, to => $to, update_profile_pic_request => $update_profile_pic_request, caption => $caption)
 
 Send raw image.
 
@@ -320,11 +374,11 @@ my $api_instance = WWW::OpenAPIClient::MessageSendingApi->new(
 
 my $instance_key = "instance_key_example"; # string | Instance key
 my $to = "to_example"; # string | The recipient's number
-my $send_image_request = WWW::OpenAPIClient::Object::SendImageRequest->new(); # SendImageRequest | 
+my $update_profile_pic_request = WWW::OpenAPIClient::Object::UpdateProfilePicRequest->new(); # UpdateProfilePicRequest | 
 my $caption = "caption_example"; # string | Attached caption
 
 eval {
-    my $result = $api_instance->send_image(instance_key => $instance_key, to => $to, send_image_request => $send_image_request, caption => $caption);
+    my $result = $api_instance->send_image(instance_key => $instance_key, to => $to, update_profile_pic_request => $update_profile_pic_request, caption => $caption);
     print Dumper($result);
 };
 if ($@) {
@@ -338,7 +392,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **instance_key** | **string**| Instance key | 
  **to** | **string**| The recipient&#39;s number | 
- **send_image_request** | [**SendImageRequest**](SendImageRequest.md)|  | 
+ **update_profile_pic_request** | [**UpdateProfilePicRequest**](UpdateProfilePicRequest.md)|  | 
  **caption** | **string**| Attached caption | [optional] 
 
 ### Return type

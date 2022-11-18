@@ -479,6 +479,91 @@ sub get_all_groups {
 }
 
 #
+# get_all_participants
+#
+# Get all participants.
+#
+# @param string $instance_key Instance key (required)
+# @param string $group_id Group id of the group (required)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    'group_id' => {
+        data_type => 'string',
+        description => 'Group id of the group',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'get_all_participants' } = {
+        summary => 'Get all participants.',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub get_all_participants {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling get_all_participants");
+    }
+
+    # verify the required parameter 'group_id' is set
+    unless (exists $args{'group_id'}) {
+      croak("Missing the required parameter 'group_id' when calling get_all_participants");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/groups/{group_id}/participants';
+
+    my $_method = 'GET';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    # path params
+    if ( exists $args{'group_id'}) {
+        my $_base_variable = "{" . "group_id" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
+#
 # get_group
 #
 # Get group.
@@ -713,6 +798,89 @@ sub get_group_invite_code {
     if ( exists $args{'group_id'}) {
         my $_base_variable = "{" . "group_id" . "}";
         my $_base_value = $self->{api_client}->to_path_value($args{'group_id'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
+#
+# join_group_with_link
+#
+# Join group with invite code.
+#
+# @param string $instance_key Instance key (required)
+# @param string $invite_code The invite code of group you want to join (required)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    'invite_code' => {
+        data_type => 'string',
+        description => 'The invite code of group you want to join',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'join_group_with_link' } = {
+        summary => 'Join group with invite code.',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub join_group_with_link {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling join_group_with_link");
+    }
+
+    # verify the required parameter 'invite_code' is set
+    unless (exists $args{'invite_code'}) {
+      croak("Missing the required parameter 'invite_code' when calling join_group_with_link");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/groups/join';
+
+    my $_method = 'GET';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
+
+    # query params
+    if ( exists $args{'invite_code'}) {
+        $query_params->{'invite_code'} = $self->{api_client}->to_query_value($args{'invite_code'});
+    }
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
         $_resource_path =~ s/$_base_variable/$_base_value/g;
     }
 

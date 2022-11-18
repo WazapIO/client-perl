@@ -518,13 +518,96 @@ sub send_document {
 }
 
 #
+# send_group_invite
+#
+# Send a group invite message
+#
+# @param string $instance_key Instance key (required)
+# @param GroupInviteMessagePayload $data Message data (required)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    'data' => {
+        data_type => 'GroupInviteMessagePayload',
+        description => 'Message data',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'send_group_invite' } = {
+        summary => 'Send a group invite message',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub send_group_invite {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling send_group_invite");
+    }
+
+    # verify the required parameter 'data' is set
+    unless (exists $args{'data'}) {
+      croak("Missing the required parameter 'data' when calling send_group_invite");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/send/group-invite';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'data'}) {
+        $_body_data = $args{'data'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
+#
 # send_image
 #
 # Send raw image.
 #
 # @param string $instance_key Instance key (required)
 # @param string $to The recipient&#39;s number (required)
-# @param SendImageRequest $send_image_request  (required)
+# @param UpdateProfilePicRequest $update_profile_pic_request  (required)
 # @param string $caption Attached caption (optional)
 {
     my $params = {
@@ -538,8 +621,8 @@ sub send_document {
         description => 'The recipient&#39;s number',
         required => '1',
     },
-    'send_image_request' => {
-        data_type => 'SendImageRequest',
+    'update_profile_pic_request' => {
+        data_type => 'UpdateProfilePicRequest',
         description => '',
         required => '1',
     },
@@ -570,9 +653,9 @@ sub send_image {
       croak("Missing the required parameter 'to' when calling send_image");
     }
 
-    # verify the required parameter 'send_image_request' is set
-    unless (exists $args{'send_image_request'}) {
-      croak("Missing the required parameter 'send_image_request' when calling send_image");
+    # verify the required parameter 'update_profile_pic_request' is set
+    unless (exists $args{'update_profile_pic_request'}) {
+      croak("Missing the required parameter 'update_profile_pic_request' when calling send_image");
     }
 
     # parse inputs
@@ -609,8 +692,8 @@ sub send_image {
 
     my $_body_data;
     # body params
-    if ( exists $args{'send_image_request'}) {
-        $_body_data = $args{'send_image_request'};
+    if ( exists $args{'update_profile_pic_request'}) {
+        $_body_data = $args{'update_profile_pic_request'};
     }
 
     # authentication setting, if any

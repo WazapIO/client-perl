@@ -10,6 +10,7 @@ docs/ContactMessagePayload.md
 docs/ContactMessagePayloadVcard.md
 docs/FileUpload.md
 docs/GroupCreatePayload.md
+docs/GroupInviteMessagePayload.md
 docs/GroupManagementApi.md
 docs/GroupUpdateDescriptionPayload.md
 docs/GroupUpdateNamePayload.md
@@ -22,11 +23,11 @@ docs/LocationMessagePayload.md
 docs/LocationMessagePayloadLocation.md
 docs/MessageSendingApi.md
 docs/MiscellaneousApi.md
+docs/PaymentRequestPayload.md
 docs/PollMessagePayload.md
 docs/ReplyButton.md
 docs/SendAudioRequest.md
 docs/SendDocumentRequest.md
-docs/SendImageRequest.md
 docs/SendMediaPayload.md
 docs/SendVideoRequest.md
 docs/SetGroupPictureRequest.md
@@ -34,6 +35,7 @@ docs/TemplateButton.md
 docs/TemplateButtonPayload.md
 docs/TemplateButtonWithMediaPayload.md
 docs/TextMessage.md
+docs/UpdateProfilePicRequest.md
 docs/UploadMediaRequest.md
 docs/UserInfoPayload.md
 docs/WebhookPayload.md
@@ -50,6 +52,7 @@ lib/WWW/OpenAPIClientmodels/ContactMessagePayload.pm
 lib/WWW/OpenAPIClientmodels/ContactMessagePayloadVcard.pm
 lib/WWW/OpenAPIClientmodels/FileUpload.pm
 lib/WWW/OpenAPIClientmodels/GroupCreatePayload.pm
+lib/WWW/OpenAPIClientmodels/GroupInviteMessagePayload.pm
 lib/WWW/OpenAPIClientmodels/GroupUpdateDescriptionPayload.pm
 lib/WWW/OpenAPIClientmodels/GroupUpdateNamePayload.pm
 lib/WWW/OpenAPIClientmodels/GroupUpdateParticipantsPayload.pm
@@ -58,11 +61,11 @@ lib/WWW/OpenAPIClientmodels/ListMessagePayload.pm
 lib/WWW/OpenAPIClientmodels/ListSection.pm
 lib/WWW/OpenAPIClientmodels/LocationMessagePayload.pm
 lib/WWW/OpenAPIClientmodels/LocationMessagePayloadLocation.pm
+lib/WWW/OpenAPIClientmodels/PaymentRequestPayload.pm
 lib/WWW/OpenAPIClientmodels/PollMessagePayload.pm
 lib/WWW/OpenAPIClientmodels/ReplyButton.pm
 lib/WWW/OpenAPIClientmodels/SendAudioRequest.pm
 lib/WWW/OpenAPIClientmodels/SendDocumentRequest.pm
-lib/WWW/OpenAPIClientmodels/SendImageRequest.pm
 lib/WWW/OpenAPIClientmodels/SendMediaPayload.pm
 lib/WWW/OpenAPIClientmodels/SendVideoRequest.pm
 lib/WWW/OpenAPIClientmodels/SetGroupPictureRequest.pm
@@ -70,6 +73,7 @@ lib/WWW/OpenAPIClientmodels/TemplateButton.pm
 lib/WWW/OpenAPIClientmodels/TemplateButtonPayload.pm
 lib/WWW/OpenAPIClientmodels/TemplateButtonWithMediaPayload.pm
 lib/WWW/OpenAPIClientmodels/TextMessage.pm
+lib/WWW/OpenAPIClientmodels/UpdateProfilePicRequest.pm
 lib/WWW/OpenAPIClientmodels/UploadMediaRequest.pm
 lib/WWW/OpenAPIClientmodels/UserInfoPayload.pm
 lib/WWW/OpenAPIClientmodels/WebhookPayload.pm
@@ -78,9 +82,6 @@ lib/WWW/OpenAPIClientwhatsapi/GroupManagementApi.pm
 lib/WWW/OpenAPIClientwhatsapi/InstanceApi.pm
 lib/WWW/OpenAPIClientwhatsapi/MessageSendingApi.pm
 lib/WWW/OpenAPIClientwhatsapi/MiscellaneousApi.pm
-t/SendAudioRequestTest.t
-t/SendDocumentRequestTest.t
-t/SendImageRequestTest.t
-t/SendVideoRequestTest.t
-t/SetGroupPictureRequestTest.t
-t/UploadMediaRequestTest.t
+t/GroupInviteMessagePayloadTest.t
+t/PaymentRequestPayloadTest.t
+t/UpdateProfilePicRequestTest.t

@@ -247,6 +247,7 @@ use WWW::OpenAPIClient::Object::ContactMessagePayload;
 use WWW::OpenAPIClient::Object::ContactMessagePayloadVcard;
 use WWW::OpenAPIClient::Object::FileUpload;
 use WWW::OpenAPIClient::Object::GroupCreatePayload;
+use WWW::OpenAPIClient::Object::GroupInviteMessagePayload;
 use WWW::OpenAPIClient::Object::GroupUpdateDescriptionPayload;
 use WWW::OpenAPIClient::Object::GroupUpdateNamePayload;
 use WWW::OpenAPIClient::Object::GroupUpdateParticipantsPayload;
@@ -255,11 +256,11 @@ use WWW::OpenAPIClient::Object::ListMessagePayload;
 use WWW::OpenAPIClient::Object::ListSection;
 use WWW::OpenAPIClient::Object::LocationMessagePayload;
 use WWW::OpenAPIClient::Object::LocationMessagePayloadLocation;
+use WWW::OpenAPIClient::Object::PaymentRequestPayload;
 use WWW::OpenAPIClient::Object::PollMessagePayload;
 use WWW::OpenAPIClient::Object::ReplyButton;
 use WWW::OpenAPIClient::Object::SendAudioRequest;
 use WWW::OpenAPIClient::Object::SendDocumentRequest;
-use WWW::OpenAPIClient::Object::SendImageRequest;
 use WWW::OpenAPIClient::Object::SendMediaPayload;
 use WWW::OpenAPIClient::Object::SendVideoRequest;
 use WWW::OpenAPIClient::Object::SetGroupPictureRequest;
@@ -267,6 +268,7 @@ use WWW::OpenAPIClient::Object::TemplateButton;
 use WWW::OpenAPIClient::Object::TemplateButtonPayload;
 use WWW::OpenAPIClient::Object::TemplateButtonWithMediaPayload;
 use WWW::OpenAPIClient::Object::TextMessage;
+use WWW::OpenAPIClient::Object::UpdateProfilePicRequest;
 use WWW::OpenAPIClient::Object::UploadMediaRequest;
 use WWW::OpenAPIClient::Object::UserInfoPayload;
 use WWW::OpenAPIClient::Object::WebhookPayload;
@@ -295,6 +297,7 @@ use WWW::OpenAPIClient::Object::ContactMessagePayload;
 use WWW::OpenAPIClient::Object::ContactMessagePayloadVcard;
 use WWW::OpenAPIClient::Object::FileUpload;
 use WWW::OpenAPIClient::Object::GroupCreatePayload;
+use WWW::OpenAPIClient::Object::GroupInviteMessagePayload;
 use WWW::OpenAPIClient::Object::GroupUpdateDescriptionPayload;
 use WWW::OpenAPIClient::Object::GroupUpdateNamePayload;
 use WWW::OpenAPIClient::Object::GroupUpdateParticipantsPayload;
@@ -303,11 +306,11 @@ use WWW::OpenAPIClient::Object::ListMessagePayload;
 use WWW::OpenAPIClient::Object::ListSection;
 use WWW::OpenAPIClient::Object::LocationMessagePayload;
 use WWW::OpenAPIClient::Object::LocationMessagePayloadLocation;
+use WWW::OpenAPIClient::Object::PaymentRequestPayload;
 use WWW::OpenAPIClient::Object::PollMessagePayload;
 use WWW::OpenAPIClient::Object::ReplyButton;
 use WWW::OpenAPIClient::Object::SendAudioRequest;
 use WWW::OpenAPIClient::Object::SendDocumentRequest;
-use WWW::OpenAPIClient::Object::SendImageRequest;
 use WWW::OpenAPIClient::Object::SendMediaPayload;
 use WWW::OpenAPIClient::Object::SendVideoRequest;
 use WWW::OpenAPIClient::Object::SetGroupPictureRequest;
@@ -315,6 +318,7 @@ use WWW::OpenAPIClient::Object::TemplateButton;
 use WWW::OpenAPIClient::Object::TemplateButtonPayload;
 use WWW::OpenAPIClient::Object::TemplateButtonWithMediaPayload;
 use WWW::OpenAPIClient::Object::TextMessage;
+use WWW::OpenAPIClient::Object::UpdateProfilePicRequest;
 use WWW::OpenAPIClient::Object::UploadMediaRequest;
 use WWW::OpenAPIClient::Object::UserInfoPayload;
 use WWW::OpenAPIClient::Object::WebhookPayload;
@@ -349,14 +353,17 @@ All URIs are relative to */api*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *BusinessManagementApi* | [**fetch_catlog**](docs/BusinessManagementApi.md#fetch_catlog) | **GET** /instances/{instance_key}/business/catalog | Fetches the catlog.
+*BusinessManagementApi* | [**send_payment_request**](docs/BusinessManagementApi.md#send_payment_request) | **POST** /instances/{instance_key}/business/payment-request | Send a payment request.
 *GroupManagementApi* | [**add_participant**](docs/GroupManagementApi.md#add_participant) | **POST** /instances/{instance_key}/groups/{group_id}/participants/add | Add participant.
 *GroupManagementApi* | [**create_group**](docs/GroupManagementApi.md#create_group) | **POST** /instances/{instance_key}/groups/create | Create group.
 *GroupManagementApi* | [**demote_participant**](docs/GroupManagementApi.md#demote_participant) | **PUT** /instances/{instance_key}/groups/{group_id}/participants/demote | Demote participant.
 *GroupManagementApi* | [**get_admin_groups**](docs/GroupManagementApi.md#get_admin_groups) | **GET** /instances/{instance_key}/groups/admin | Get admin groups.
 *GroupManagementApi* | [**get_all_groups**](docs/GroupManagementApi.md#get_all_groups) | **GET** /instances/{instance_key}/groups/ | Get all groups.
+*GroupManagementApi* | [**get_all_participants**](docs/GroupManagementApi.md#get_all_participants) | **GET** /instances/{instance_key}/groups/{group_id}/participants | Get all participants.
 *GroupManagementApi* | [**get_group**](docs/GroupManagementApi.md#get_group) | **GET** /instances/{instance_key}/groups/{group_id} | Get group.
 *GroupManagementApi* | [**get_group_from_invite_link**](docs/GroupManagementApi.md#get_group_from_invite_link) | **GET** /instances/{instance_key}/groups/invite-info | Get group from invite link.
 *GroupManagementApi* | [**get_group_invite_code**](docs/GroupManagementApi.md#get_group_invite_code) | **GET** /instances/{instance_key}/groups/{group_id}/invite-code | Get group invite code.
+*GroupManagementApi* | [**join_group_with_link**](docs/GroupManagementApi.md#join_group_with_link) | **GET** /instances/{instance_key}/groups/join | Join group with invite code.
 *GroupManagementApi* | [**leave_group**](docs/GroupManagementApi.md#leave_group) | **DELETE** /instances/{instance_key}/groups/{group_id}/ | Leaves the group.
 *GroupManagementApi* | [**promote_participant**](docs/GroupManagementApi.md#promote_participant) | **PUT** /instances/{instance_key}/groups/{group_id}/participants/promote | Promote participant.
 *GroupManagementApi* | [**remove_participant**](docs/GroupManagementApi.md#remove_participant) | **DELETE** /instances/{instance_key}/groups/{group_id}/participants/remove | Remove participant.
@@ -378,6 +385,7 @@ Class | Method | HTTP request | Description
 *MessageSendingApi* | [**send_button_with_media**](docs/MessageSendingApi.md#send_button_with_media) | **POST** /instances/{instance_key}/send/button-media | Send a button message with a media header.
 *MessageSendingApi* | [**send_contact**](docs/MessageSendingApi.md#send_contact) | **POST** /instances/{instance_key}/send/contact | Send a contact message.
 *MessageSendingApi* | [**send_document**](docs/MessageSendingApi.md#send_document) | **POST** /instances/{instance_key}/send/document | Send raw document.
+*MessageSendingApi* | [**send_group_invite**](docs/MessageSendingApi.md#send_group_invite) | **POST** /instances/{instance_key}/send/group-invite | Send a group invite message
 *MessageSendingApi* | [**send_image**](docs/MessageSendingApi.md#send_image) | **POST** /instances/{instance_key}/send/image | Send raw image.
 *MessageSendingApi* | [**send_list_message**](docs/MessageSendingApi.md#send_list_message) | **POST** /instances/{instance_key}/send/list | Send a List message.
 *MessageSendingApi* | [**send_location**](docs/MessageSendingApi.md#send_location) | **POST** /instances/{instance_key}/send/location | Send a location message.
@@ -388,8 +396,11 @@ Class | Method | HTTP request | Description
 *MessageSendingApi* | [**send_text_message**](docs/MessageSendingApi.md#send_text_message) | **POST** /instances/{instance_key}/send/text | Send a text message.
 *MessageSendingApi* | [**send_video**](docs/MessageSendingApi.md#send_video) | **POST** /instances/{instance_key}/send/video | Send raw video.
 *MessageSendingApi* | [**upload_media**](docs/MessageSendingApi.md#upload_media) | **POST** /instances/{instance_key}/send/upload | Upload media.
+*MiscellaneousApi* | [**download_media**](docs/MiscellaneousApi.md#download_media) | **POST** /instances/{instance_key}/misc/download | Download media
 *MiscellaneousApi* | [**get_profile_pic**](docs/MiscellaneousApi.md#get_profile_pic) | **GET** /instances/{instance_key}/misc/profile-pic | Get profile pic.
 *MiscellaneousApi* | [**get_users_info**](docs/MiscellaneousApi.md#get_users_info) | **POST** /instances/{instance_key}/misc/user-info | Fetches the users info.
+*MiscellaneousApi* | [**set_chat_presence**](docs/MiscellaneousApi.md#set_chat_presence) | **POST** /instances/{instance_key}/misc/chat-presence | Set chat presence
+*MiscellaneousApi* | [**update_profile_pic**](docs/MiscellaneousApi.md#update_profile_pic) | **PUT** /instances/{instance_key}/misc/profile-pic | Update profile picture
 
 
 # DOCUMENTATION FOR MODELS
@@ -400,6 +411,7 @@ Class | Method | HTTP request | Description
  - [WWW::OpenAPIClient::Object::ContactMessagePayloadVcard](docs/ContactMessagePayloadVcard.md)
  - [WWW::OpenAPIClient::Object::FileUpload](docs/FileUpload.md)
  - [WWW::OpenAPIClient::Object::GroupCreatePayload](docs/GroupCreatePayload.md)
+ - [WWW::OpenAPIClient::Object::GroupInviteMessagePayload](docs/GroupInviteMessagePayload.md)
  - [WWW::OpenAPIClient::Object::GroupUpdateDescriptionPayload](docs/GroupUpdateDescriptionPayload.md)
  - [WWW::OpenAPIClient::Object::GroupUpdateNamePayload](docs/GroupUpdateNamePayload.md)
  - [WWW::OpenAPIClient::Object::GroupUpdateParticipantsPayload](docs/GroupUpdateParticipantsPayload.md)
@@ -408,11 +420,11 @@ Class | Method | HTTP request | Description
  - [WWW::OpenAPIClient::Object::ListSection](docs/ListSection.md)
  - [WWW::OpenAPIClient::Object::LocationMessagePayload](docs/LocationMessagePayload.md)
  - [WWW::OpenAPIClient::Object::LocationMessagePayloadLocation](docs/LocationMessagePayloadLocation.md)
+ - [WWW::OpenAPIClient::Object::PaymentRequestPayload](docs/PaymentRequestPayload.md)
  - [WWW::OpenAPIClient::Object::PollMessagePayload](docs/PollMessagePayload.md)
  - [WWW::OpenAPIClient::Object::ReplyButton](docs/ReplyButton.md)
  - [WWW::OpenAPIClient::Object::SendAudioRequest](docs/SendAudioRequest.md)
  - [WWW::OpenAPIClient::Object::SendDocumentRequest](docs/SendDocumentRequest.md)
- - [WWW::OpenAPIClient::Object::SendImageRequest](docs/SendImageRequest.md)
  - [WWW::OpenAPIClient::Object::SendMediaPayload](docs/SendMediaPayload.md)
  - [WWW::OpenAPIClient::Object::SendVideoRequest](docs/SendVideoRequest.md)
  - [WWW::OpenAPIClient::Object::SetGroupPictureRequest](docs/SetGroupPictureRequest.md)
@@ -420,6 +432,7 @@ Class | Method | HTTP request | Description
  - [WWW::OpenAPIClient::Object::TemplateButtonPayload](docs/TemplateButtonPayload.md)
  - [WWW::OpenAPIClient::Object::TemplateButtonWithMediaPayload](docs/TemplateButtonWithMediaPayload.md)
  - [WWW::OpenAPIClient::Object::TextMessage](docs/TextMessage.md)
+ - [WWW::OpenAPIClient::Object::UpdateProfilePicRequest](docs/UpdateProfilePicRequest.md)
  - [WWW::OpenAPIClient::Object::UploadMediaRequest](docs/UploadMediaRequest.md)
  - [WWW::OpenAPIClient::Object::UserInfoPayload](docs/UserInfoPayload.md)
  - [WWW::OpenAPIClient::Object::WebhookPayload](docs/WebhookPayload.md)
