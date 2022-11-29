@@ -1500,4 +1500,103 @@ sub upload_media {
     return $_response_object;
 }
 
+#
+# upload_media_from_url
+#
+# Upload media from url.
+#
+# @param string $instance_key Instance key (required)
+# @param string $type Media type (required)
+# @param UrlMediaUploadPayload $data Media data (required)
+{
+    my $params = {
+    'instance_key' => {
+        data_type => 'string',
+        description => 'Instance key',
+        required => '1',
+    },
+    'type' => {
+        data_type => 'string',
+        description => 'Media type',
+        required => '1',
+    },
+    'data' => {
+        data_type => 'UrlMediaUploadPayload',
+        description => 'Media data',
+        required => '1',
+    },
+    };
+    __PACKAGE__->method_documentation->{ 'upload_media_from_url' } = {
+        summary => 'Upload media from url.',
+        params => $params,
+        returns => 'APIResponse',
+        };
+}
+# @return APIResponse
+#
+sub upload_media_from_url {
+    my ($self, %args) = @_;
+
+    # verify the required parameter 'instance_key' is set
+    unless (exists $args{'instance_key'}) {
+      croak("Missing the required parameter 'instance_key' when calling upload_media_from_url");
+    }
+
+    # verify the required parameter 'type' is set
+    unless (exists $args{'type'}) {
+      croak("Missing the required parameter 'type' when calling upload_media_from_url");
+    }
+
+    # verify the required parameter 'data' is set
+    unless (exists $args{'data'}) {
+      croak("Missing the required parameter 'data' when calling upload_media_from_url");
+    }
+
+    # parse inputs
+    my $_resource_path = '/instances/{instance_key}/send/upload-url';
+
+    my $_method = 'POST';
+    my $query_params = {};
+    my $header_params = {};
+    my $form_params = {};
+
+    # 'Accept' and 'Content-Type' header
+    my $_header_accept = $self->{api_client}->select_header_accept('*/*');
+    if ($_header_accept) {
+        $header_params->{'Accept'} = $_header_accept;
+    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
+
+    # query params
+    if ( exists $args{'type'}) {
+        $query_params->{'type'} = $self->{api_client}->to_query_value($args{'type'});
+    }
+
+    # path params
+    if ( exists $args{'instance_key'}) {
+        my $_base_variable = "{" . "instance_key" . "}";
+        my $_base_value = $self->{api_client}->to_path_value($args{'instance_key'});
+        $_resource_path =~ s/$_base_variable/$_base_value/g;
+    }
+
+    my $_body_data;
+    # body params
+    if ( exists $args{'data'}) {
+        $_body_data = $args{'data'};
+    }
+
+    # authentication setting, if any
+    my $auth_settings = [qw(ApiKeyAuth )];
+
+    # make the API Call
+    my $response = $self->{api_client}->call_api($_resource_path, $_method,
+                                           $query_params, $form_params,
+                                           $header_params, $_body_data, $auth_settings);
+    if (!$response) {
+        return;
+    }
+    my $_response_object = $self->{api_client}->deserialize('APIResponse', $response);
+    return $_response_object;
+}
+
 1;

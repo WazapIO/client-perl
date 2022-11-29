@@ -25,6 +25,7 @@ Method | HTTP request | Description
 [**send_text_message**](MessageSendingApi.md#send_text_message) | **POST** /instances/{instance_key}/send/text | Send a text message.
 [**send_video**](MessageSendingApi.md#send_video) | **POST** /instances/{instance_key}/send/video | Send raw video.
 [**upload_media**](MessageSendingApi.md#upload_media) | **POST** /instances/{instance_key}/send/upload | Upload media.
+[**upload_media_from_url**](MessageSendingApi.md#upload_media_from_url) | **POST** /instances/{instance_key}/send/upload-url | Upload media from url.
 
 
 # **send_audio**
@@ -877,6 +878,61 @@ Name | Type | Description  | Notes
  **instance_key** | **string**| Instance key | 
  **type** | **string**| Media type | 
  **upload_media_request** | [**UploadMediaRequest**](UploadMediaRequest.md)|  | 
+
+### Return type
+
+[**APIResponse**](APIResponse.md)
+
+### Authorization
+
+[ApiKeyAuth](../README.md#ApiKeyAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: */*
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **upload_media_from_url**
+> APIResponse upload_media_from_url(instance_key => $instance_key, type => $type, data => $data)
+
+Upload media from url.
+
+Uploads media from a url to WhatsApp servers and returns the media keys. Store the returned media keys, as you will need them to send media messages
+
+### Example
+```perl
+use Data::Dumper;
+use WWW::OpenAPIClient::MessageSendingApi;
+my $api_instance = WWW::OpenAPIClient::MessageSendingApi->new(
+
+    # Configure API key authorization: ApiKeyAuth
+    api_key => {'Authorization' => 'YOUR_API_KEY'},
+    # uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+    #api_key_prefix => {'Authorization' => 'Bearer'},
+);
+
+my $instance_key = "instance_key_example"; # string | Instance key
+my $type = "type_example"; # string | Media type
+my $data = WWW::OpenAPIClient::Object::UrlMediaUploadPayload->new(); # UrlMediaUploadPayload | Media data
+
+eval {
+    my $result = $api_instance->upload_media_from_url(instance_key => $instance_key, type => $type, data => $data);
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling MessageSendingApi->upload_media_from_url: $@\n";
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **instance_key** | **string**| Instance key | 
+ **type** | **string**| Media type | 
+ **data** | [**UrlMediaUploadPayload**](UrlMediaUploadPayload.md)| Media data | 
 
 ### Return type
 

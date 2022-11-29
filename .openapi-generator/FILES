@@ -37,6 +37,7 @@ docs/TemplateButtonWithMediaPayload.md
 docs/TextMessage.md
 docs/UpdateProfilePicRequest.md
 docs/UploadMediaRequest.md
+docs/UrlMediaUploadPayload.md
 docs/UserInfoPayload.md
 docs/WebhookPayload.md
 git_push.sh
@@ -75,6 +76,7 @@ lib/WWW/OpenAPIClientmodels/TemplateButtonWithMediaPayload.pm
 lib/WWW/OpenAPIClientmodels/TextMessage.pm
 lib/WWW/OpenAPIClientmodels/UpdateProfilePicRequest.pm
 lib/WWW/OpenAPIClientmodels/UploadMediaRequest.pm
+lib/WWW/OpenAPIClientmodels/UrlMediaUploadPayload.pm
 lib/WWW/OpenAPIClientmodels/UserInfoPayload.pm
 lib/WWW/OpenAPIClientmodels/WebhookPayload.pm
 lib/WWW/OpenAPIClientwhatsapi/BusinessManagementApi.pm
@@ -82,6 +84,4 @@ lib/WWW/OpenAPIClientwhatsapi/GroupManagementApi.pm
 lib/WWW/OpenAPIClientwhatsapi/InstanceApi.pm
 lib/WWW/OpenAPIClientwhatsapi/MessageSendingApi.pm
 lib/WWW/OpenAPIClientwhatsapi/MiscellaneousApi.pm
-t/GroupInviteMessagePayloadTest.t
-t/PaymentRequestPayloadTest.t
-t/UpdateProfilePicRequestTest.t
+t/UrlMediaUploadPayloadTest.t
