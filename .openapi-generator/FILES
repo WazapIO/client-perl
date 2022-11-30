@@ -8,6 +8,7 @@ docs/ButtonMessagePayload.md
 docs/ButtonMessageWithMediaPayload.md
 docs/ContactMessagePayload.md
 docs/ContactMessagePayloadVcard.md
+docs/CreateInstancePayload.md
 docs/FileUpload.md
 docs/GroupCreatePayload.md
 docs/GroupInviteMessagePayload.md
@@ -51,6 +52,7 @@ lib/WWW/OpenAPIClientmodels/ButtonMessagePayload.pm
 lib/WWW/OpenAPIClientmodels/ButtonMessageWithMediaPayload.pm
 lib/WWW/OpenAPIClientmodels/ContactMessagePayload.pm
 lib/WWW/OpenAPIClientmodels/ContactMessagePayloadVcard.pm
+lib/WWW/OpenAPIClientmodels/CreateInstancePayload.pm
 lib/WWW/OpenAPIClientmodels/FileUpload.pm
 lib/WWW/OpenAPIClientmodels/GroupCreatePayload.pm
 lib/WWW/OpenAPIClientmodels/GroupInviteMessagePayload.pm
@@ -84,4 +86,4 @@ lib/WWW/OpenAPIClientwhatsapi/GroupManagementApi.pm
 lib/WWW/OpenAPIClientwhatsapi/InstanceApi.pm
 lib/WWW/OpenAPIClientwhatsapi/MessageSendingApi.pm
 lib/WWW/OpenAPIClientwhatsapi/MiscellaneousApi.pm
-t/UrlMediaUploadPayloadTest.t
+t/CreateInstancePayloadTest.t

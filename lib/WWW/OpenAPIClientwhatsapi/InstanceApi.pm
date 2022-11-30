@@ -136,13 +136,13 @@ sub change_webhook_url {
 #
 # Creates a new instance key.
 #
-# @param string $instance_key Insert instance key if you want to provide custom key (optional)
+# @param CreateInstancePayload $data Instance data (required)
 {
     my $params = {
-    'instance_key' => {
-        data_type => 'string',
-        description => 'Insert instance key if you want to provide custom key',
-        required => '0',
+    'data' => {
+        data_type => 'CreateInstancePayload',
+        description => 'Instance data',
+        required => '1',
     },
     };
     __PACKAGE__->method_documentation->{ 'create_instance' } = {
@@ -156,10 +156,15 @@ sub change_webhook_url {
 sub create_instance {
     my ($self, %args) = @_;
 
+    # verify the required parameter 'data' is set
+    unless (exists $args{'data'}) {
+      croak("Missing the required parameter 'data' when calling create_instance");
+    }
+
     # parse inputs
     my $_resource_path = '/instances/create';
 
-    my $_method = 'GET';
+    my $_method = 'POST';
     my $query_params = {};
     my $header_params = {};
     my $form_params = {};
@@ -169,14 +174,14 @@ sub create_instance {
     if ($_header_accept) {
         $header_params->{'Accept'} = $_header_accept;
     }
-    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type();
-
-    # query params
-    if ( exists $args{'instance_key'}) {
-        $query_params->{'instance_key'} = $self->{api_client}->to_query_value($args{'instance_key'});
-    }
+    $header_params->{'Content-Type'} = $self->{api_client}->select_header_content_type('application/json');
 
     my $_body_data;
+    # body params
+    if ( exists $args{'data'}) {
+        $_body_data = $args{'data'};
+    }
+
     # authentication setting, if any
     my $auth_settings = [qw(ApiKeyAuth )];
 

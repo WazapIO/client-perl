@@ -10,7 +10,7 @@ All URIs are relative to */api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**change_webhook_url**](InstanceApi.md#change_webhook_url) | **PUT** /instances/{instance_key}/webhook | Change Webhook url.
-[**create_instance**](InstanceApi.md#create_instance) | **GET** /instances/create | Creates a new instance key.
+[**create_instance**](InstanceApi.md#create_instance) | **POST** /instances/create | Creates a new instance key.
 [**delete_instance**](InstanceApi.md#delete_instance) | **DELETE** /instances/{instance_key}/delete | Delete Instance.
 [**get_contacts**](InstanceApi.md#get_contacts) | **GET** /instances/{instance_key}/contacts | Get contacts.
 [**get_instance**](InstanceApi.md#get_instance) | **GET** /instances/{instance_key}/ | Get Instance.
@@ -73,7 +73,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **create_instance**
-> APIResponse create_instance(instance_key => $instance_key)
+> APIResponse create_instance(data => $data)
 
 Creates a new instance key.
 
@@ -91,10 +91,10 @@ my $api_instance = WWW::OpenAPIClient::InstanceApi->new(
     #api_key_prefix => {'Authorization' => 'Bearer'},
 );
 
-my $instance_key = "instance_key_example"; # string | Insert instance key if you want to provide custom key
+my $data = WWW::OpenAPIClient::Object::CreateInstancePayload->new(); # CreateInstancePayload | Instance data
 
 eval {
-    my $result = $api_instance->create_instance(instance_key => $instance_key);
+    my $result = $api_instance->create_instance(data => $data);
     print Dumper($result);
 };
 if ($@) {
@@ -106,7 +106,7 @@ if ($@) {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **instance_key** | **string**| Insert instance key if you want to provide custom key | [optional] 
+ **data** | [**CreateInstancePayload**](CreateInstancePayload.md)| Instance data | 
 
 ### Return type
 
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json
  - **Accept**: */*
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
